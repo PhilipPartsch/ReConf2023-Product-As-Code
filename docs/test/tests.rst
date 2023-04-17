@@ -17,10 +17,10 @@ Test results for merge_dicts
 ****************************
 
 .. test-file:: Test merge_dicts Results
-    :file: _static/_external_data/merge_dicts_test_results.xml
-    :id: TEST_RES_merge_dicts
-    :auto_suites:
-    :auto_cases:
+   :file: _static/_external_data/merge_dicts_test_results.xml
+   :id: TEST_RES_merge_dicts
+   :auto_suites:
+   :auto_cases:
 
 
 

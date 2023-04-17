@@ -14,11 +14,11 @@ To use merge_dicts, first install it using pip:
 
    (.venv) $ pip install merge_dicts
 
-Creating recipes
-----------------
 
-To retrieve a list of random ingredients,
-you can use the ``merge_dicts.merge_dicts()`` function:
+Merge dictionaries
+------------------
+
+To merge dictionaries, you can use the ``merge_dicts.merge_dicts()`` function:
 
 .. autofunction :: merge_dicts.merge_dicts
 

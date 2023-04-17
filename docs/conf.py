@@ -5,6 +5,9 @@ import sys
 sys.path.append(os.path.abspath('.'))
 import metamodel
 
+sys.path.append(os.path.abspath('scripts'))
+from filter import filter_id_linked_element_and_back
+
 # For autodoc
 
 # For merge_dicts and other cripts on this level:

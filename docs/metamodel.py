@@ -47,12 +47,12 @@ needs_types = [
                # Architecture & Design
                dict(directive="bin", title="Binary", prefix="BIN_", color="#abcdef", style="rectangle"),
                dict(directive="lib", title="Library ", prefix="LIB_", color="#abcdef", style="rectangle"),
-               dict(directive="package", title="Package", prefix="P_", color="#abcdef", style="folder"),
-               dict(directive="module", title="Module", prefix="M_", color="#abcdef", style="component"),
+               dict(directive="package", title="Package", prefix="P_", color="#abcdef", style="package"),
+               dict(directive="arch_module", title="Module", prefix="M_", color="#abcdef", style="package"),
                dict(directive="comp", title="Component", prefix="C_", color="#abcdef", style="component"),
                dict(directive="unit", title="Unit", prefix="U_", color="#abcdef", style="rectangle"),
                dict(directive="if", title="Interface", prefix="IF_", color="#abcdef", style="interface"),
-               dict(directive="des_dec", title="Design Decision", prefix="DD_", color="#efff9c", style="artifact"),
+               dict(directive="decision", title="Decision", prefix="D_", color="#efff9c", style="artifact"),
 
                # Test
                dict(directive="test_spec", title="Test Specification", prefix="TS_", color="#abcdef", style="artifact"),
@@ -173,13 +173,24 @@ needs_extra_links = [
    {
       "option": "satisfies",
       "incoming": "is satisfied by",
-      "outgoing": "satisfies"
+      "outgoing": "satisfies",
+      "style_start": "-up",
+      "style_end": "->",
    },
    # link from a requirement or archiecture element to a test specifiction
+      {
+      "option": "tests",
+      "incoming": "tested by",
+      "outgoing": "tests",
+      "style_start": "-up",
+      "style_end": "->"
+   },
    {
       "option": "verfied_by",
       "incoming": "verfies",
-      "outgoing": "verfied by"
+      "outgoing": "verfied by",
+      "style_start": "<-up",
+      "style_end": "-"
    },
    # link from a requirement to an archiecture element
    {
@@ -191,8 +202,19 @@ needs_extra_links = [
    {
       "option": "evaluated",
       "incoming": "evaluated by",
-      "outgoing": "evaluated"
+      "outgoing": "evaluated",
+      "style_start": "-up",
+      "style_end": "->",
    },
+   
+   {
+      "option": "implements",
+      "incoming": "implemented by",
+      "outgoing": "implements",
+      "style_start": "-up",
+      "style_end": "->"
+   },
+
 ]
 
 needs_layouts = {}
@@ -204,7 +226,7 @@ needs_global_options = {}
 needs_warnings = {
     'artifact_without_stored_in_link': "type == 'artifact' and len(stored_in) == 0",
     'stakeholder_requirement_without_author': "type == 'stake_req' and not author",
-    'author_only_allowed_for_stakeholder_requirement': "type != 'stake_req' and author",
+    #'author_only_allowed_for_stakeholder_requirement': "type != 'stake_req' and author",
     'evaluation_output_and_evaluated_needed': "type == 'evaluation' and (len(output) == 0 or len(evaluated) == 0)",
     'invalid_status' : "status and status not in ['accepted', 'implemented', 'verified']",
 }
