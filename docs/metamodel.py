@@ -186,6 +186,11 @@ needs_extra_links = [
       "incoming": "implemented by",
       "outgoing": "implements"
    },
+   # from evaluation report to artifact under evalaution
+   {
+      "option": "evaluated",
+      "incoming": "evaluated by",
+      "outgoing": "evaluated"
 ]
 
 needs_layouts = {}
