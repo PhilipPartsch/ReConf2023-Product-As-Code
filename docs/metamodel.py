@@ -59,7 +59,10 @@ needs_types = [
                dict(directive="test_coverage", title="Test Coverage", prefix="TCOVER_", color="#abcdef", style="artifact"),
                dict(directive="sys_test", title="System Test", prefix="SYSTST_", color="#abcdef", style="artifact"),
                dict(directive="sw_test", title="Software Test", prefix="SWTST_", color="#abcdef", style="artifact"),
-               
+
+               # Generic
+               dict(directive="evaluation", title="Evaluation", prefix="EVAL_", color="#abcdef", style="artifact"),
+
               ]
 
 # Define extra options for needs object
