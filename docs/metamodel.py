@@ -23,7 +23,7 @@ needs_types = [
                dict(directive="process", title="Process", prefix="PROC_", color="#ffffff", style="package"),
                dict(directive="activity", title="Activity", prefix="ACT_", color="#ffffff", style="card"),
                dict(directive="artifact", title="Artifact", prefix="ART_", color="#ffffff", style="artifact"),
-               dict(directive="status", title="Status", prefix="STATUS_", color="#ffffff", style="artifact"), # Child of Artifact
+               dict(directive="pstatus", title="Status", prefix="STATUS_", color="#ffffff", style="artifact"), # Child of Artifact
 
                # Instruction
                dict(directive="template", title="Template", prefix="TEMP_", color="#ffffff", style="frame"),
@@ -62,6 +62,7 @@ needs_types = [
 
                # Generic
                dict(directive="evaluation", title="Evaluation", prefix="EVAL_", color="#abcdef", style="artifact"),
+               dict(directive="verify", title="Verification Information", prefix="VERIFY_", color="#abcdef", style="artifact"),
 
               ]
 
@@ -168,11 +169,11 @@ needs_extra_links = [
       "outgoing": "Justification",
       "style": "#000000",
    },
-   # link from a stakeholder requirement to software requirement
+   # link from a software requirement to stakeholder requirement
    {
-      "option": "satisfied_by",
-      "incoming": "satisfies",
-      "outgoing": "is satisfied by"
+      "option": "satisfies",
+      "incoming": "is satisfied by",
+      "outgoing": "satisfies"
    },
    # link from a requirement or archiecture element to a test specifiction
    {
@@ -202,8 +203,10 @@ needs_global_options = {}
 
 needs_warnings = {
     'artifact_without_stored_in_link': "type == 'artifact' and len(stored_in) == 0",
-    #'author_only_allowed_for_stakeholder_requirement': "type != 'stake_req' and author",
-    #'stakeholder_requirement_without_author': "type == 'stake_req' and not author",
+    'stakeholder_requirement_without_author': "type == 'stake_req' and not author",
+    'author_only_allowed_for_stakeholder_requirement': "type != 'stake_req' and author",
+    'evaluation_output_and_evaluated_needed': "type == 'evaluation' and (len(output) == 0 or len(evaluated) == 0)",
+    'invalid_status' : "status and status not in ['accepted', 'implemented', 'verified']",
 }
 
 

@@ -8,7 +8,7 @@ As Developer, I often have to merge `python dictionaries <https://www.w3schools.
    :id: CSTRQ_MERGE_DICTS
    :author: PhilipPartsch
 
-   Provide a python module with a function to merge a list of
+   Provide a python module with a function to merge
    python dictionaries to one dictionary.
 
 .. stake_req:: Detect merge conflicts

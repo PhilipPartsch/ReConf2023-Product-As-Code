@@ -25,7 +25,3 @@ how to :ref:`installation` the project.
    test/test_coverage
    test/test_report
 
-.. toctree::
-   :caption: Generic Examples
-
-   example/variant_specification

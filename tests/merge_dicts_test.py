@@ -91,7 +91,7 @@ class Test_Merge_Dicts:
 
     def test_merge_dictionaries_no_dict_exception(self):
         print('4. If we put in something else than a list of dictionaries,'+
-              'we shall get an "AttributeError" excpetion.')
+              'we shall get an "AttributeError" exception.')
         h = ['a','b', 'c',]
         i = ['x','y', 'z',]
         
