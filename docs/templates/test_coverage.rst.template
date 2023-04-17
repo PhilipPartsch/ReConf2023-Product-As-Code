@@ -1,0 +1,11 @@
+##############################################################################
+Test coverage for {{file}}
+##############################################################################
+
+
+.. test_coverage:: Test coverage for {{file}}
+   :id: TCOVER_{{name|upper}}
+   :pathfile: {{file}}
+   :coverage: {{coverage}}
+
+

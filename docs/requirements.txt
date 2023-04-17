@@ -1,0 +1,17 @@
+sphinx>=4.0
+sphinxcontrib-plantuml
+sphinx-needs
+matplotlib
+sphinx-copybutton
+sphinxcontrib-programoutput
+sphinx-design
+click
+tabulate
+sphinx-immaterial==0.7.3
+sphinx-rtd-theme
+esbonio>=0.13.0
+sphinx-test-reports
+pytest
+pytest-reportlog
+coverage
+sphinx-collections
