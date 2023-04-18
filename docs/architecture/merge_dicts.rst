@@ -8,11 +8,25 @@ Architecture: merge_dicts
    :satisfies: SWRQ_TOOL_merge_dicts, CSTRQ_MERGE_DICTS
    :implements: IF_MERGE_DICTS
 
-   **Architecture**
+   **Element**
 
    .. needarch::
 
-      package merge_dicts
+      rectangle "{{need().title}}" as {{need().id}} {{ref(need().id)}}
+
+   .. instead of explicit manual definition of needarch, we could even use {{flow(need().id)}}
+      to achieve the same.
+
+
+   **Architecture with interfaces**
+
+   .. needarch::
+      :key: class
+
+      rectangle "{{need().title}}" as {{need().id}} {{ref(need().id)}}
+      {{import("implements")}}
+      IF_MERGE_DICTS <- M_MERGE_DICTS
+
 
    **Architecture generated from datamodel**
 
@@ -21,6 +35,12 @@ Architecture: merge_dicts
       :link_types: implements
       :show_link_names:
       :align: left
+
+
+   .. autosummary::
+
+      merge_dicts
+
 
    .. decision:: Complexity of module
       :id: D_M_MERGE_DICTS
@@ -39,7 +59,10 @@ Architecture: merge_dicts
 
    .. needarch::
 
-      interface merge_dicts
+      interface "{{need().title}}" as {{need().id}} {{ref(need().id, text = "")}}
+
+   .. instead of explicit manual definition of needarch, we could even use {{flow(need().id)}}
+      to achieve the same.
 
    .. decision:: Complexity of interface
       :id: D_IF_MERGE_DICTS

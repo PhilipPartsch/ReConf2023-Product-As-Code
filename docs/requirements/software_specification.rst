@@ -11,6 +11,7 @@ Specification for Merge Python Dictionaries
 
 .. sw_req:: Merge python dictionaries
    :id: SWRQ_MERGE_DICTS
+   :status: verified
    :satisfies: CSTRQ_MERGE_DICTS
 
    The python module `merge_dicts` shall provide a function to merge a list of
@@ -22,20 +23,20 @@ Specification for Merge Python Dictionaries
    :id: SWRQ_LIST_OF_DICTS
    :satisfies: CSTRQ_MERGE_DICTS
 
-   The above defined function to merge dicticonaires shall treat list as:
-   non, one, two or many dictioanries organized in a list.
+   The above defined function to merge dictionaries shall treat list as:
+   non, one, two or many dictionaries organized in a list.
 
-   .. verify:: Test function with appropiate number of dicts
+   .. verify:: Test function with appropriate number of dictionaries
       :id: VERIFY_SWRQ_LIST_OF_DICTS
 
-      Test funtion with:
+      Test function with:
       
       - empty list
-      - one dicticonairy in the list
-      - two dicticonairy in the list
-      - three dicticonairy in the list (many)
+      - one dictionary in the list
+      - two dictionary in the list
+      - three dictionary in the list (many)
 
-      With python it is difficlut to test the upper bound.
+      With python it is difficult to test the upper bound.
 
 
 
@@ -54,7 +55,7 @@ Specification for Merge Python Dictionaries
 
 
 
-.. sw_req:: Allow double definitons of same Key / Value
+.. sw_req:: Allow double definitions of same Key / Value
    :id: SWRQ_ALLOW_DOUBLE_DEFINITION
    :satisfies: CSTRQ_DETECT_MERGE_CONFLICTS
 
@@ -73,7 +74,7 @@ Specification for Merge Python Dictionaries
    :id: SWRQ_USE_FIRST_VALUE_FOR_KEY
    :satisfies: CSTRQ_DETECT_MERGE_CONFLICTS
 
-   If we have the same key in two dictinaries but different content,
+   If we have the same key in two dictionaries but different content,
    the first defined value shall be in the final dictionary.
 
    .. verify:: Output in merge conflict case

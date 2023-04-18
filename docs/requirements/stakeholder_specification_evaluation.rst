@@ -55,8 +55,8 @@ Stakeholder Specification Evaluation for Merge Python Dictionaries
    :output: SWRQ_USE_FIRST_VALUE_FOR_KEY
 
    In some cases, a merge conflict is not stop sign.
-   It is possible to proceed, if we define the merge behaviour in such case:
+   It is possible to proceed, if we define the merge behavior in such case:
    
-   If we have the same key in two dictinaries but different content,
+   If we have the same key in two dictionaries but different content,
    the first value shall be in the final dict.
 

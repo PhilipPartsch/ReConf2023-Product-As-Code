@@ -135,5 +135,7 @@ needs_functions = metamodel.needs_functions
 
 needs_global_options = metamodel.needs_global_options
 
+needs_render_context = metamodel.needs_render_context
+
 needs_warnings = metamodel.needs_warnings
 

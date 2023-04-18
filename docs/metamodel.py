@@ -68,13 +68,13 @@ needs_types = [
 
 # Define extra options for needs object
 needs_extra_options = [
-    'author', # to store the author of a stakeholder requirement
-    'safety_level',
-    'security_level',
-    'reject_reason',
-    'coverage', # to store test coverage in %
-    'pathfile', # file path in needs e.g. for test coverage
-    'interface_definition', # to store in machine readable code interface definition
+   'author', # to store the author of a stakeholder requirement
+   'safety_level',
+   'security_level',
+   'reject_reason',
+   'coverage', # to store test coverage in %
+   'pathfile', # file path in needs e.g. for test coverage
+   'interface_definition', # to store in machine readable code interface definition
 ]
 
 needs_services = {}
@@ -222,6 +222,10 @@ needs_layouts = {}
 needs_functions = []
 
 needs_global_options = {}
+
+needs_render_context = {
+#   "draw": draw(),
+}
 
 needs_warnings = {
     'artifact_without_stored_in_link': "type == 'artifact' and len(stored_in) == 0",
