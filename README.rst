@@ -1,9 +1,11 @@
-Template for the Read the Docs tutorial
-=======================================
+=========
+X-As-Code
+=========
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+Here I over example project for X-As-Code.
 
-Read the tutorial here:
+See https://www.hood-group.com/reconf/agenda#__2023-04-25%anforderungsmanagement-lets-try-the-linux-way-of-working
 
-https://docs.readthedocs.io/en/stable/tutorial/
+
+
+
