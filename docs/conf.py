@@ -41,6 +41,7 @@ extensions = [
     'sphinxcontrib.plantuml',
     'sphinxcontrib.test_reports',
     'sphinxcontrib.collections',
+    'sphinxcontrib.jquery', # https://github.com/sphinx-contrib/jquery
 ]
 
 templates_path = ['_templates']

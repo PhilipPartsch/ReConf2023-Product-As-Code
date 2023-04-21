@@ -17,11 +17,10 @@ how to :ref:`installation` the project.
    :caption: Contents
 
    requirements/index
-
    architecture/index
 
-   doc/usage
    doc/api
+   doc/usage
 
    test/tests
    test/test_coverage

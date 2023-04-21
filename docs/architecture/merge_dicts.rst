@@ -28,6 +28,13 @@ Architecture: merge_dicts
       IF_MERGE_DICTS <- M_MERGE_DICTS
 
 
+   Implementation:
+
+   .. autosummary::
+
+      merge_dicts
+
+
    **Architecture generated from datamodel**
 
    .. needflow:: Links
@@ -35,12 +42,6 @@ Architecture: merge_dicts
       :link_types: implements
       :show_link_names:
       :align: left
-
-
-   .. autosummary::
-
-      merge_dicts
-
 
    .. decision:: Complexity of module
       :id: D_M_MERGE_DICTS
@@ -63,6 +64,8 @@ Architecture: merge_dicts
 
    .. instead of explicit manual definition of needarch, we could even use {{flow(need().id)}}
       to achieve the same.
+
+   Implementation: :py:func:`merge_dicts.merge_dicts`
 
    .. decision:: Complexity of interface
       :id: D_IF_MERGE_DICTS
