@@ -2,3 +2,7 @@
 {
    max-width: 80% !important;
 }
+div.wy-table-responsive {
+   /*enlarge needstables to full size to overcome scalling issue*/
+   width: 100% !important;
+}
