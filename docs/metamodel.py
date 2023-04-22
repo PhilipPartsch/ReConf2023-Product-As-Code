@@ -217,14 +217,30 @@ needs_extra_links = [
 
 ]
 
-needs_layouts = {}
+needs_layouts = {
+    'stakeholder_requirement': {
+        'grid': 'simple_side_right_partial',
+        'layout': {
+            'head': [
+                '<<meta("type_name")>>: **<<meta("title")>>** <<meta_id()>>  <<collapse_button("meta", '
+                'collapsed="icon:arrow-down-circle", visible="icon:arrow-right-circle", initial=False)>> '
+            ],
+            'meta': ['<<meta_all(no_links=True, exclude=["layout",])>>', '<<meta_links_all()>>'],
+            'side': ['<<image("https://avatars.githubusercontent.com/{{author}}", align="center", is_external=True)>>',],
+        }
+    },
+}
+
 
 needs_functions = []
 
-needs_global_options = {}
+needs_global_options = {
+    'layout': [ 
+        #('stakeholder_requirement', 'type=="stake_req"'),
+    ],
+}
 
 needs_render_context = {
-#   "draw": draw(),
 }
 
 needs_warnings = {
@@ -246,3 +262,13 @@ for type in needs_types:
     else:
         # todo: add warning
         pass
+
+needs_string_links = {
+    # Links to the related github user
+    'github_user': {
+        'regex': r'^(?P<value>\w+)$',
+        'link_url': 'https://github.com/{{value}}',
+        'link_name': 'GitHub User {{value}}',
+        'options': ['author'],
+    },
+}

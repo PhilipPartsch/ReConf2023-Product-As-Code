@@ -140,3 +140,4 @@ needs_render_context = metamodel.needs_render_context
 
 needs_warnings = metamodel.needs_warnings
 
+needs_string_links = metamodel.needs_string_links
