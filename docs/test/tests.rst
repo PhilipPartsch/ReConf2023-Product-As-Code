@@ -1,5 +1,4 @@
 
-
 #####################
 Tests for merge_dicts
 #####################
@@ -10,7 +9,6 @@ Test specification for merge_dicts
 
 .. autodata:: merge_dicts_test.sphinx_needs_test_spec
 
-.. automodule:: merge_dicts_test
 
 
 Test results for merge_dicts
@@ -34,5 +32,6 @@ The logs can be found in different formats:
 
 -  Machine readable logs as json file:
    :download:`merge_dicts_test_log.json </_static/_external_data/merge_dicts_test_log.json>`
+
 
 

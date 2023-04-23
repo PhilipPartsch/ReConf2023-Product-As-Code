@@ -7,6 +7,7 @@ As Developer, I often have to merge `python dictionaries <https://www.w3schools.
 .. stake_req:: Merge python dictionaries
    :id: CSTRQ_MERGE_DICTS
    :author: PhilipPartsch
+   :status: accepted
 
    Provide a python module with a function to merge
    python dictionaries to one dictionary.
@@ -14,6 +15,7 @@ As Developer, I often have to merge `python dictionaries <https://www.w3schools.
 .. stake_req:: Detect merge conflicts
    :id: CSTRQ_DETECT_MERGE_CONFLICTS
    :author: PhilipPartsch
+   :status: accepted
 
    As multiple dictionaries could have for the same Key different
    defined Values, the python module shall report merge conflicts.

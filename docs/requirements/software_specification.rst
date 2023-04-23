@@ -4,6 +4,7 @@ Specification for Merge Python Dictionaries
 
 .. sw_req:: Name of the tool: merge_dicts
    :id: SWRQ_TOOL_merge_dicts
+   :status: verified
 
    The tool / script shall be defined as `merge_dicts`.
 
@@ -21,6 +22,7 @@ Specification for Merge Python Dictionaries
 
 .. sw_req:: Definition: list of dictionaries
    :id: SWRQ_LIST_OF_DICTS
+   :status: verified
    :satisfies: CSTRQ_MERGE_DICTS
 
    The above defined function to merge dictionaries shall treat list as:
@@ -42,6 +44,7 @@ Specification for Merge Python Dictionaries
 
 .. sw_req:: Detect merge conflicts
    :id: SWRQ_DETECT_MERGE_CONFLICTS
+   :status: verified
    :satisfies: CSTRQ_DETECT_MERGE_CONFLICTS
 
    As multiple dictionaries could have for the same Key different
@@ -57,6 +60,7 @@ Specification for Merge Python Dictionaries
 
 .. sw_req:: Allow double definitions of same Key / Value
    :id: SWRQ_ALLOW_DOUBLE_DEFINITION
+   :status: verified
    :satisfies: CSTRQ_DETECT_MERGE_CONFLICTS
 
    The definition of the same Key/Value Pair is allowed and
@@ -72,6 +76,7 @@ Specification for Merge Python Dictionaries
 
 .. sw_req:: Output in merge conflict case
    :id: SWRQ_USE_FIRST_VALUE_FOR_KEY
+   :status: verified
    :satisfies: CSTRQ_DETECT_MERGE_CONFLICTS
 
    If we have the same key in two dictionaries but different content,

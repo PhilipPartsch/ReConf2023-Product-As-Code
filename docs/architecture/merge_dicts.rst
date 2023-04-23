@@ -5,7 +5,7 @@ Architecture: merge_dicts
 
 .. arch_module:: merge_dicts
    :id: M_MERGE_DICTS
-   :satisfies: SWRQ_TOOL_merge_dicts, CSTRQ_MERGE_DICTS
+   :satisfies: SWRQ_TOOL_merge_dicts, SWRQ_MERGE_DICTS
    :implements: IF_MERGE_DICTS
 
    **Element**
@@ -53,8 +53,8 @@ Architecture: merge_dicts
 
 .. if:: merge_dicts
    :id: IF_MERGE_DICTS
-   :satisfies: CSTRQ_MERGE_DICTS, SWRQ_DETECT_MERGE_CONFLICTS, SWRQ_ALLOW_DOUBLE_DEFINITION, SWRQ_USE_FIRST_VALUE_FOR_KEY
-   :verfied_by: TCOVER_MERGE_DICTS
+   :satisfies: SWRQ_MERGE_DICTS, SWRQ_DETECT_MERGE_CONFLICTS, SWRQ_ALLOW_DOUBLE_DEFINITION, SWRQ_USE_FIRST_VALUE_FOR_KEY
+   :verified_by: TCOVER_MERGE_DICTS
 
    **Architecture**
 
@@ -62,7 +62,7 @@ Architecture: merge_dicts
 
       interface "{{need().title}}" as {{need().id}} {{ref(need().id, text = "")}}
 
-   .. instead of explicit manual definition of needarch, we could even use {{flow(need().id)}}
+   .. instead of explicit manual definition of needarch, we could even use `{{flow(need().id)}}`
       to achieve the same.
 
    Implementation: :py:func:`merge_dicts.merge_dicts`

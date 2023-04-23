@@ -1,16 +1,13 @@
 """
 Test_Merge_Dicts:
-How to use the script?
-Run test in test classes with pytest with
-pytest -q merge_dicts_test.py
 """
 
 sphinx_needs_test_spec = ''
 """
 .. test_spec:: Test of merge_dicts
    :id: TS_MERGE_DICTS
-   :status: accepted
-   :verfied_by: TEST_RES_merge_dicts
+   :status: verified
+   :verified_by: TEST_RES_merge_dicts
    :tests: SWRQ_TOOL_merge_dicts,
            SWRQ_MERGE_DICTS,
            SWRQ_LIST_OF_DICTS,
@@ -28,6 +25,9 @@ sphinx_needs_test_spec = ''
 
    **Test Design**
    
+   **Test execution**
+   
+   Run tests in test class with pytest. Command: `pytest -q merge_dicts_test.py`
 """
 
 import sys

@@ -1,10 +1,5 @@
 
 
-# global
-main_color = "#164293"
-link_color = "#89037A"
-
-
 
 # sphinx_needs configuration
 needs_id_regex = '^[A-Za-z0-9_-]{3,}'
@@ -51,7 +46,7 @@ needs_types = [
                dict(directive="arch_module", title="Module", prefix="M_", color="#abcdef", style="package"),
                dict(directive="comp", title="Component", prefix="C_", color="#abcdef", style="component"),
                dict(directive="unit", title="Unit", prefix="U_", color="#abcdef", style="rectangle"),
-               dict(directive="if", title="Interface", prefix="IF_", color="#abcdef", style="interface"),
+               dict(directive="if", title="Interface", prefix="IF_", color="#abcdef", style="card"),
                dict(directive="decision", title="Decision", prefix="D_", color="#efff9c", style="artifact"),
 
                # Test
@@ -75,6 +70,7 @@ needs_extra_options = [
    'coverage', # to store test coverage in %
    'pathfile', # file path in needs e.g. for test coverage
    'interface_definition', # to store in machine readable code interface definition
+   'test_status',
 ]
 
 needs_services = {}
@@ -186,9 +182,9 @@ needs_extra_links = [
       "style_end": "->"
    },
    {
-      "option": "verfied_by",
-      "incoming": "verfies",
-      "outgoing": "verfied by",
+      "option": "verified_by",
+      "incoming": "verifies",
+      "outgoing": "verified by",
       "style_start": "<-up",
       "style_end": "-"
    },
@@ -231,12 +227,65 @@ needs_layouts = {
     },
 }
 
+def check_verified(app, need, needs, *args, **kwargs):
+    """
+    :param app: sphinx app
+    :param need: current need
+    :param needs: dictionary of all needs. Key is the need id
+    :return: str,int,float or list of elements of type str,int,float
+    """
 
-needs_functions = []
+    if need['status'] == 'verified':
+        # At time dynamic function is been executed incoming links are not resolved.
+        # We have to search back by ourself.
+        tests_back_list = []
+        for n in needs.values():
+            if need['id'] in n['tests']:
+                tests_back_list.append(n['id'])
+        if len(tests_back_list) > 0:
+            result_passed = True
+            for test_by in tests_back_list:
+                if needs[test_by]['type'] == 'test_spec' and needs[test_by]['status'] == 'verified':
+                    if len(needs[test_by]['verified_by']) > 0:
+                        for current_verified_by in needs[test_by]['verified_by']:
+                            result_passed = result_passed and needs[current_verified_by]['cases'].isdigit() and (int(needs[current_verified_by]['cases']) > 0)
+                            result_passed = result_passed and (needs[current_verified_by]['cases'] == needs[current_verified_by]['passed'])
+                            if not result_passed:
+                                return 'failed test cases => failed'
+                                break
+                        if not result_passed:
+                                break
+                    else:
+                        # no test result linked => failed
+                        # print('no test result linked => failed')
+                        result_passed = False
+                        return 'no test result linked => failed'
+                        break
+                else:
+                    # a not verified test spec linked => failed
+                    # print('a not verified test spec linked => failed')
+                    result_passed = False
+                    return 'a not verified test spec linked => failed'
+                    break
+
+            if result_passed:
+                return 'verified_passed'
+            else:
+                return 'verified_failed'
+
+        else:
+            return ''
+    else:
+        return ''
+
+needs_functions = [check_verified]
 
 needs_global_options = {
     'layout': [ 
         #('stakeholder_requirement', 'type=="stake_req"'),
+    ],
+    'test_status': [
+        ('[[check_verified()]]', 'type=="sw_req"'),
     ],
 }
 

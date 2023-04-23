@@ -7,6 +7,7 @@ import metamodel
 
 sys.path.append(os.path.abspath('scripts'))
 from filter import filter_id_linked_element_and_back
+from reports import stake_req_without_satisfied_by
 
 # For autodoc
 
