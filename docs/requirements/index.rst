@@ -61,4 +61,4 @@ Overview
    :types: stake_req, sw_req, arch_module, if, test_spec, testfile, test_coverage
    :show_link_names:
    :show_filters:
-   :debug:
+
