@@ -32,7 +32,7 @@ Overview
 
 **Requiremennts & Status Overview**
 
-.. needbar:: Requiremennts & Status Overview
+.. needbar:: Requirements & Status Overview
    :legend:
    :colors: black, yellow, orange, green
    :xlabels: FROM_DATA
@@ -45,14 +45,12 @@ Overview
       verified, type=='stake_req' and status=='verified'   ,    type=='sw_req' and status=='verified'
 
 
-
 **Requirement Linkage**
 
 .. needflow:: Requirement Linkage
    :types: stake_req, sw_req
    :show_link_names:
    :show_filters:
-
 
 
 **V-Model**

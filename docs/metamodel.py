@@ -287,6 +287,9 @@ needs_global_options = {
     'test_status': [
         ('[[check_verified()]]', 'type=="sw_req"'),
     ],
+    'post_template': [
+        ('evaluation_post_template', 'type=="evaluation"'),
+    ],
 }
 
 needs_render_context = {
