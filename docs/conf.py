@@ -119,6 +119,8 @@ plantuml_output_format = 'svg'
 
 # sphinx_needs configuration
 
+needs_role_need_max_title_length = -1
+
 needs_build_json = True
 
 needs_id_regex = metamodel.needs_id_regex
