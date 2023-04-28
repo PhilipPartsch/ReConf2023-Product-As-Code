@@ -25,7 +25,9 @@ Architecture: merge_dicts
 
       rectangle "{{need().title}}" as {{need().id}} {{ref(need().id)}}
       {{import("implements")}}
-      IF_MERGE_DICTS <- M_MERGE_DICTS
+      {% for e in need().implements %}{{e}} <- {{need().id}}
+      {% endfor %}
+      }
 
 
    Implementation:
