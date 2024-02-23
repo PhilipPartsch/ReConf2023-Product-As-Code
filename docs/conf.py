@@ -20,12 +20,17 @@ import merge_dicts_test
 
 # -- Project information
 
+import datetime
+
+currentDateTime = datetime.datetime.now()
+date = currentDateTime.date()
+
 project = 'ReConf 2023 X-As-Code'
-copyright = '2023, PhilipPartsch'
+copyright = f'2023 - {date.year}, PhilipPartsch'
 author = 'PhilipPartsch'
 
-release = '0.1'
-version = '0.1.0'
+release = '0.2'
+version = '0.2.0'
 
 # -- General configuration
 on_rtd = os.environ.get("READTHEDOCS") == "True"
