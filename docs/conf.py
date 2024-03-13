@@ -30,7 +30,7 @@ copyright = f'2023 - {date.year}, PhilipPartsch'
 author = 'PhilipPartsch'
 
 release = '0.2'
-version = '0.2.0'
+version = '0.2.1'
 
 # -- General configuration
 on_rtd = os.environ.get("READTHEDOCS") == "True"
