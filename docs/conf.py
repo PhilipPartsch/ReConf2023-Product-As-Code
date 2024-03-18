@@ -66,20 +66,27 @@ exclude_patterns = ['_tools/*',]
 
 # -- Sphinx-Preview
 
+# The config for the preview features, which allows to "sneak" into a link.
+# Docs: https://sphinx-preview.readthedocs.io/en/latest/#configuration
 preview_config = {
-    "selector": "div.body a",
-    "not_selector": "div.needs_head a, h1 a, h2 a",
+    # Add a preview icon only for this type of links
+    # This is very theme and HTML specific. In this case "div-mo-content" is the content area
+    # and we handle all links there.
+    "selector": "div.md-content a",
+    # A list of selectors, where no preview icon shall be added, because it makes often no sense.
+    # For instance the own ID of a need object, or the link on an image to open the image.
+    "not_selector": "div.needs_head a, h1 a, h2 a, a.headerlink, a.md-content__button, a.image-reference, em.sig-param a, a.paginate_button",
     "set_icon": True,
     "icon_only": True,
-    "icon_click": False,
-    "icon": "  👁",
-    "width": 500,
+    "icon_click": True,
+    "icon": "🔍",
+    "width": 600,
     "height": 400,
     "offset": {
-        "left": 20,
-        "top": 20,
+        "left": 0,
+        "top": 0
     },
-    "timeout": 500,
+    "timeout": 0,
 }
 
 # -- Options for HTML output
