@@ -72,10 +72,12 @@ preview_config = {
     # Add a preview icon only for this type of links
     # This is very theme and HTML specific. In this case "div-mo-content" is the content area
     # and we handle all links there.
-    "selector": "div.md-content a",
+    #"selector": "div.md-content a",
     # A list of selectors, where no preview icon shall be added, because it makes often no sense.
     # For instance the own ID of a need object, or the link on an image to open the image.
-    "not_selector": "div.needs_head a, h1 a, h2 a, a.headerlink, a.md-content__button, a.image-reference, em.sig-param a, a.paginate_button",
+    #"not_selector": "div.needs_head a, h1 a, h2 a, a.headerlink, a.md-content__button, a.image-reference, em.sig-param a, a.paginate_button",
+    "selector": "div.body a",
+    "not_selector": "div.needs_head a, h1 a, h2 a",
     "set_icon": True,
     "icon_only": True,
     "icon_click": True,
