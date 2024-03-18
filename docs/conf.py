@@ -48,6 +48,7 @@ extensions = [
     'sphinxcontrib.test_reports',
     'sphinxcontrib.collections',
     'sphinxcontrib.jquery', # https://github.com/sphinx-contrib/jquery
+    'sphinx_preview',
 ]
 
 templates_path = ['_templates']
@@ -62,6 +63,24 @@ exclude_patterns = ['_tools/*',]
 #}
 #intersphinx_disabled_domains = ['std']
 
+
+# -- Sphinx-Preview
+
+preview_config = {
+    "selector": "div.body a",
+    "not_selector": "div.needs_head a, h1 a, h2 a",
+    "set_icon": True,
+    "icon_only": True,
+    "icon_click": False,
+    "icon": "  👁",
+    "width": 500,
+    "height": 400,
+    "offset": {
+        "left": 20,
+        "top": 20,
+    },
+    "timeout": 500,
+}
 
 # -- Options for HTML output
 

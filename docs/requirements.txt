@@ -16,3 +16,4 @@ pytest
 pytest-reportlog
 coverage
 sphinx-collections
+sphinx-preview
