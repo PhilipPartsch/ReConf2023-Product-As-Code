@@ -91,7 +91,9 @@ preview_config = {
 
 # -- Options for HTML output
 
-html_theme = 'sphinx_rtd_theme'
+#html_theme = 'sphinx_rtd_theme'
+html_theme = 'alabaster'
+
 
 html_css_files = ['custom.css']
 
