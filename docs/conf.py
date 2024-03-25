@@ -2,12 +2,16 @@
 
 import os
 import sys
+from sphinx_needs.api import add_dynamic_function
+
 sys.path.append(os.path.abspath('.'))
 import metamodel
 
 sys.path.append(os.path.abspath('scripts'))
 from filter import filter_id_linked_element_and_back
 from reports import stake_req_without_satisfied_by
+
+from gitlink import get_url_from_repo, extent_url_with_needs_data, get_github_edit_url_for_need
 
 # For autodoc
 
@@ -81,7 +85,7 @@ preview_config = {
     "set_icon": True,
     "icon_only": True,
     "icon_click": True,
-    "icon": "🔍",
+    "icon": "🔎",
     "width": 600,
     "height": 400,
     "offset": {
@@ -179,3 +183,14 @@ needs_render_context = metamodel.needs_render_context
 needs_warnings = metamodel.needs_warnings
 
 needs_string_links = metamodel.needs_string_links
+
+needs_default_layout = 'clean_with_edit_link'
+
+def setup(app):
+    repo_dir = app.srcdir
+    print('edit url to git hoster:')
+    git_url = get_url_from_repo(repo_dir)
+    print(git_url)
+    app.add_config_value(name = 'gitlink_edit_url_to_git_hoster', default = git_url, rebuild = '', types = [str])
+
+    add_dynamic_function(app, get_github_edit_url_for_need)
