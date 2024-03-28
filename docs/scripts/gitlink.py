@@ -85,10 +85,8 @@ def get_edit_url_from_folder(docu_path, with_docu_part: bool = True, docu_part_d
          print('got base url: ' + str(my_url))
          my_hoster = get_hoster_from_url(my_url)
          print('got hoster: ' + str(my_hoster))
-         my_branch = os.getenv("READTHEDOCS_VERSION_NAME", default = '')
+         my_branch = os.getenv("READTHEDOCS_GIT_IDENTIFIER", default = '')
          print('got branch: ' + str(my_branch))
-         my_repo_path = os.getenv("READTHEDOCS_VIRTUALENV_PATH", default = '')
-         print('got repopath: ' + str(my_repo_path))
          my_docu_part = os.getenv("DOCS_FOLDER_IN_REPO", default = docu_part_default)
          print('got docu part of path: ' + str(my_docu_part))
       else:
