@@ -31,10 +31,10 @@ build:
     - default-jdk
     - graphviz
   tools:
-    python: "3.11"
+    python: "3.12"
   jobs:
     pre_build:
-      - DOCS_FOLDER_IN_REPO=docs command --flag
+      - export DOCS_FOLDER_IN_REPO=docs
       - coverage run --branch --data-file=./docs/_static/_external_data/coverage.file -m pytest ./tests/ --junitxml=./docs/_static/_external_data/merge_dicts_test_results.xml --report-log=./docs/_static/_external_data/merge_dicts_test_log.json
       - coverage html --data-file=./docs/_static/_external_data/coverage.file -d ./docs/_static/_external_data/coverage_html
       - coverage json --data-file=./docs/_static/_external_data/coverage.file -o ./docs/_static/_external_data/coverage.json
