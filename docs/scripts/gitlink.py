@@ -77,6 +77,11 @@ def get_edit_url_from_folder(docu_path, with_docu_part: bool = True):
       print('running on readthedocs CI')
       print('got docupath: ' + str(docu_path))
       my_url = os.getenv("READTHEDOCS_GIT_CLONE_URL", default = '')
+      remove_from_end =['.git/', '.git']
+      for r in remove_from_end:
+         if my_url.endswith(r):
+            my_url = my_url[:-len(r)]
+            break
       print('got base url: ' + str(my_url))
       my_hoster = get_hoster_from_url(my_url)
       print('got hoster: ' + str(my_hoster))
