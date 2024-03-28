@@ -89,7 +89,7 @@ def get_edit_url_from_folder(docu_path, with_docu_part: bool = True):
       print('got branch: ' + str(my_branch))
       my_repo_path = os.getenv("READTHEDOCS_VIRTUALENV_PATH", default = '')
       print('got repopath: ' + str(my_repo_path))
-      my_docu_part = get_docu_part_from_repo_path(docu_path, my_repo_path)
+      my_docu_part = os.getenv("DOCS_FOLDER_IN_REPO", default = '')
       print('got docu part of path: ' + str(my_docu_part))
 
       commit_url = my_url
