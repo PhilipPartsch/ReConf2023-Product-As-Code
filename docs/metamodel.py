@@ -1,4 +1,4 @@
-
+from gitlink import get_github_edit_url_for_need
 
 
 # sphinx_needs configuration
@@ -71,6 +71,8 @@ needs_extra_options = [
    'pathfile', # file path in needs e.g. for test coverage
    'interface_definition', # to store in machine readable code interface definition
    'test_status',
+
+   'github_edit_url',
 ]
 
 needs_services = {}
@@ -210,10 +212,21 @@ needs_extra_links = [
       "style_start": "-up",
       "style_end": "->"
    },
-
 ]
 
+#needs_default_layout
 needs_layouts = {
+    "clean_with_edit_link": {
+        "grid": "simple",
+        "layout": {
+            "head": [
+                '<<meta("type_name")>>: **<<meta("title")>>** <<meta_id()>>  <<collapse_button("meta", '
+                'collapsed="icon:arrow-down-circle", visible="icon:arrow-right-circle", initial=False)>>  '
+                '<<link("github_edit_url", "✏️", is_dynamic=True)>>'
+            ],
+            "meta": ['<<meta_all(no_links=True, exclude=["layout", "github_edit_url"])>>', '<<meta_links_all()>>'],
+        },
+    },
     'stakeholder_requirement': {
         'grid': 'simple_side_right_partial',
         'layout': {
@@ -281,15 +294,13 @@ def check_verified(app, need, needs, *args, **kwargs):
 needs_functions = [check_verified]
 
 needs_global_options = {
-    'layout': [ 
-        #('stakeholder_requirement', 'type=="stake_req"'),
-    ],
     'test_status': [
         ('[[check_verified()]]', 'type=="sw_req"'),
     ],
     'post_template': [
         ('evaluation_post_template', 'type=="evaluation"'),
     ],
+    'github_edit_url': '[[get_github_edit_url_for_need("id")]]',
 }
 
 needs_render_context = {

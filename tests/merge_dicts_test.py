@@ -23,11 +23,16 @@ sphinx_needs_test_spec = ''
 
    This is a test specification for the module :need:`M_MERGE_DICTS`.
 
-   **Test Design**
-   
    **Test execution**
-   
+
    Run tests in test class with pytest. Command: `pytest -q merge_dicts_test.py`
+
+   **Test steps**
+
+   .. autoclass:: merge_dicts_test.Test_Merge_Dicts
+      :members:
+      :undoc-members:
+
 """
 
 import sys
@@ -38,7 +43,7 @@ import pytest
 
 class Test_Merge_Dicts:
     def test_merge_dictionaries(self):
-        print('1. It shall be possible to merge dictionaries.')
+        """1. It shall be possible to merge dictionaries."""
         a = {
             'a': 1,
             'b': 2,
@@ -59,8 +64,8 @@ class Test_Merge_Dicts:
         assert ~merge_conflict
 
     def test_merge_dictionaries_different_content(self):
-        print('2. If we have the same key in two dictinaries but different content,'+
-              'the merge_conflict bit shall be set.')
+        """2. If we have the same key in two dictinaries but different content,
+        the merge_conflict bit shall be set."""
         a = {
             'a': 1,
             'b': 2,
@@ -81,8 +86,8 @@ class Test_Merge_Dicts:
         assert merge_conflict
 
     def test_merge_dictionaries_double_defined_content(self):
-        print('3. If we have the same key in two dictinaries and the same content,'+
-          'the merge_conflict bit shall not be set.')
+        """3. If we have the same key in two dictinaries and the same content,
+        the merge_conflict bit shall not be set."""
         a = {
             'a': 1,
             'b': 2,
@@ -103,8 +108,8 @@ class Test_Merge_Dicts:
         assert ~merge_conflict
 
     def test_merge_dictionaries_no_dict_exception(self):
-        print('4. If we put in something else than a list of dictionaries,'+
-              'we shall get an "AttributeError" exception.')
+        """4. If we put in something else than a list of dictionaries,
+        we shall get an "AttributeError" exception."""
         h = ['a','b', 'c',]
         i = ['x','y', 'z',]
         
@@ -112,7 +117,7 @@ class Test_Merge_Dicts:
             [j, merge_conflict] = merge_dicts(h,i)
 
     def test_merge_empty_dictionaries(self):
-        print('5. It shall be possible to give in empty dictionaries.')
+        """5. It shall be possible to give in empty dictionaries."""
         k = {}
         #print(k)
         [l, merge_conflict] = merge_dicts(k)
@@ -123,7 +128,7 @@ class Test_Merge_Dicts:
         assert ~merge_conflict
 
     def test_merge_dictionaries_no_parameter(self):
-        print('6. It shall be possible to give nothing to the function')
+        """6. It shall be possible to give nothing to the function"""
         
         [m, merge_conflict] = merge_dicts()
         #print(l)
@@ -133,8 +138,8 @@ class Test_Merge_Dicts:
         assert ~merge_conflict
 
     def test_merge_dictionaries_latest_defined_value_in(self):
-        print('7. If we have the same key in two dictinaries but different content,'+
-              'the first value shall be in the final dict.')
+        """7. If we have the same key in two dictinaries but different content,
+        the first value shall be in the final dict."""
         a = {
             'a': 1,
             'b': 2,
@@ -156,7 +161,7 @@ class Test_Merge_Dicts:
         assert merge_conflict
 
     def test_merge_many_dictionaries(self):
-        print('8. It shall be possible to give in more than two dictinaries.')
+        """8. It shall be possible to give in more than two dictinaries."""
         a = {
             'a': 1,
             'b': 2,

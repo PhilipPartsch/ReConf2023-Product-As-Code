@@ -2,12 +2,16 @@
 
 import os
 import sys
+from sphinx_needs.api import add_dynamic_function
+
 sys.path.append(os.path.abspath('.'))
 import metamodel
 
 sys.path.append(os.path.abspath('scripts'))
 from filter import filter_id_linked_element_and_back
 from reports import stake_req_without_satisfied_by
+
+from gitlink import get_url_from_repo, extent_url_with_needs_data, get_github_edit_url_for_need
 
 # For autodoc
 
@@ -20,12 +24,17 @@ import merge_dicts_test
 
 # -- Project information
 
+import datetime
+
+currentDateTime = datetime.datetime.now()
+date = currentDateTime.date()
+
 project = 'ReConf 2023 X-As-Code'
-copyright = '2023, PhilipPartsch'
+copyright = f'2023 - {date.year}, PhilipPartsch'
 author = 'PhilipPartsch'
 
-release = '0.1'
-version = '0.1.0'
+release = '0.2'
+version = '0.2.1'
 
 # -- General configuration
 on_rtd = os.environ.get("READTHEDOCS") == "True"
@@ -43,6 +52,7 @@ extensions = [
     'sphinxcontrib.test_reports',
     'sphinxcontrib.collections',
     'sphinxcontrib.jquery', # https://github.com/sphinx-contrib/jquery
+    'sphinx_preview',
 ]
 
 templates_path = ['_templates']
@@ -58,9 +68,38 @@ exclude_patterns = ['_tools/*',]
 #intersphinx_disabled_domains = ['std']
 
 
+# -- Sphinx-Preview
+
+# The config for the preview features, which allows to "sneak" into a link.
+# Docs: https://sphinx-preview.readthedocs.io/en/latest/#configuration
+preview_config = {
+    # Add a preview icon only for this type of links
+    # This is very theme and HTML specific. In this case "div-mo-content" is the content area
+    # and we handle all links there.
+    #"selector": "div.md-content a",
+    # A list of selectors, where no preview icon shall be added, because it makes often no sense.
+    # For instance the own ID of a need object, or the link on an image to open the image.
+    "not_selector": "div.needs_head a, h1 a, h2 a, a.headerlink, a.md-content__button, a.image-reference, em.sig-param a, a.paginate_button",
+    "selector": "div.body a",
+    #"not_selector": "div.needs_head a, h1 a, h2 a",
+    "set_icon": True,
+    "icon_only": True,
+    "icon_click": True,
+    "icon": "🔎",
+    "width": 600,
+    "height": 400,
+    "offset": {
+        "left": 0,
+        "top": 0
+    },
+    "timeout": 0,
+}
+
 # -- Options for HTML output
 
-html_theme = 'sphinx_rtd_theme'
+#html_theme = 'sphinx_rtd_theme'
+html_theme = 'alabaster'
+
 
 html_css_files = ['custom.css']
 
@@ -144,3 +183,14 @@ needs_render_context = metamodel.needs_render_context
 needs_warnings = metamodel.needs_warnings
 
 needs_string_links = metamodel.needs_string_links
+
+needs_default_layout = 'clean_with_edit_link'
+
+def setup(app):
+    repo_dir = app.srcdir
+    print('edit url to git hoster:')
+    git_url = get_url_from_repo(repo_dir)
+    print(git_url)
+    app.add_config_value(name = 'gitlink_edit_url_to_git_hoster', default = git_url, rebuild = '', types = [str])
+
+    add_dynamic_function(app, get_github_edit_url_for_need)
