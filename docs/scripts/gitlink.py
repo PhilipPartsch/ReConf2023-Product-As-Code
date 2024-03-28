@@ -96,6 +96,8 @@ def get_edit_url_from_folder(docu_path, with_docu_part: bool = True, docu_part_d
       if my_hoster == 'github':
          commit_url = commit_url + '/edit/' + my_branch
          if with_docu_part:
+            if not my_docu_part.startswith('/'):
+               my_docu_part = '/' + my_docu_part
             commit_url = commit_url + my_docu_part
       return commit_url
 
