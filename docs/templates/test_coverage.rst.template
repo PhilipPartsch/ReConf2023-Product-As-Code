@@ -7,5 +7,6 @@ Test coverage for {{file}}
    :id: TCOVER_{{name|upper}}
    :pathfile: {{file}}
    :coverage: {{coverage}}
+   :github_edit_url: {{github_edit_url}}
 
 

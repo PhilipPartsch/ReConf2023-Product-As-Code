@@ -11,7 +11,7 @@ sys.path.append(os.path.abspath('scripts'))
 from filter import filter_id_linked_element_and_back
 from reports import stake_req_without_satisfied_by
 
-from gitlink import get_url_from_repo, extent_url_with_needs_data, get_github_edit_url_for_need
+from gitlink import get_edit_url_from_folder, extent_url_with_file, get_githoster_edit_url_for_need
 
 # For autodoc
 
@@ -86,6 +86,7 @@ preview_config = {
     "icon_only": True,
     "icon_click": True,
     "icon": "🔎",
+    #"icon": "icon:search",
     "width": 600,
     "height": 400,
     "offset": {
@@ -123,6 +124,12 @@ import json
 # relative from here: _static/_external_data/coverage.json
 test_coverage_file = os.path.join(os.path.dirname(__file__), '_static', '_external_data', 'coverage.json')
 
+print('edit url to git hoster:')
+import pathlib
+current_folder = pathlib.Path().resolve()
+git_hoster_edit_url = get_edit_url_from_folder(current_folder, with_docu_part = True)
+print(git_hoster_edit_url)
+
 if os.path.exists(test_coverage_file):
     f = open(test_coverage_file)
     json_data = json.load(f)
@@ -130,12 +137,13 @@ if os.path.exists(test_coverage_file):
     files = json_data['files']
     test_coverage = []
     for key, value in files.items():
-       test_coverage_pro_file = {}
-       coverage = value['summary']['percent_covered']
-       test_coverage_pro_file['name'] = key.replace('/', '_').replace('\\', '_').replace('.py', '')
-       test_coverage_pro_file['file'] = key
-       test_coverage_pro_file['coverage'] = coverage
-       test_coverage.append(test_coverage_pro_file)
+        test_coverage_per_file = {}
+        coverage = value['summary']['percent_covered']
+        test_coverage_per_file['name'] = key.replace('/', '_').replace('\\', '_').replace('.py', '')
+        test_coverage_per_file['file'] = key
+        test_coverage_per_file['coverage'] = coverage
+        test_coverage_per_file['github_edit_url'] = extent_url_with_file(git_hoster_edit_url, str(os.path.join('templates', 'test_coverage.rst.template')))
+        test_coverage.append(test_coverage_per_file)
 
     collections['test_coverage'] = {
                                     'driver': 'jinja',
@@ -187,10 +195,7 @@ needs_string_links = metamodel.needs_string_links
 needs_default_layout = 'clean_with_edit_link'
 
 def setup(app):
-    repo_dir = app.srcdir
-    print('edit url to git hoster:')
-    git_url = get_url_from_repo(repo_dir)
-    print(git_url)
-    app.add_config_value(name = 'gitlink_edit_url_to_git_hoster', default = git_url, rebuild = '', types = [str])
+    app.add_config_value(name = 'gitlink_edit_url_to_git_hoster', default = git_hoster_edit_url, rebuild = '', types = [str])
 
-    add_dynamic_function(app, get_github_edit_url_for_need)
+    add_dynamic_function(app, get_githoster_edit_url_for_need)
+

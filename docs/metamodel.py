@@ -1,4 +1,8 @@
-from gitlink import get_github_edit_url_for_need
+import os
+import sys
+sys.path.append(os.path.abspath('.'))
+sys.path.append(os.path.abspath('scripts')) # for gitlink
+from gitlink import get_githoster_edit_url_for_need
 
 
 # sphinx_needs configuration
@@ -221,8 +225,8 @@ needs_layouts = {
         "layout": {
             "head": [
                 '<<meta("type_name")>>: **<<meta("title")>>** <<meta_id()>>  <<collapse_button("meta", '
-                'collapsed="icon:arrow-down-circle", visible="icon:arrow-right-circle", initial=False)>>  '
-                '<<link("github_edit_url", "✏️", is_dynamic=True)>>'
+                'collapsed="icon:arrow-down-circle", visible="icon:arrow-right-circle", initial=False)>>   '
+                '<<link(url="github_edit_url", image_url="icon:edit", image_height=17, is_dynamic=True)>>'
             ],
             "meta": ['<<meta_all(no_links=True, exclude=["layout", "github_edit_url"])>>', '<<meta_links_all()>>'],
         },
@@ -300,7 +304,7 @@ needs_global_options = {
     'post_template': [
         ('evaluation_post_template', 'type=="evaluation"'),
     ],
-    'github_edit_url': '[[get_github_edit_url_for_need("id")]]',
+    'github_edit_url': '[[get_githoster_edit_url_for_need("id")]]',
 }
 
 needs_render_context = {
