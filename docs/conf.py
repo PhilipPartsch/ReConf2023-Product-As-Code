@@ -127,7 +127,7 @@ test_coverage_file = os.path.join(os.path.dirname(__file__), '_static', '_extern
 print('edit url to git hoster:')
 import pathlib
 current_folder = pathlib.Path().resolve()
-git_hoster_edit_url = get_edit_url_from_folder(current_folder, with_docu_part = True)
+git_hoster_edit_url = get_edit_url_from_folder(current_folder, with_docu_part = True, docu_part_default = 'docs')
 print(git_hoster_edit_url)
 
 if os.path.exists(test_coverage_file):
