@@ -72,25 +72,42 @@ def get_hoster_from_url(url):
 
 def get_edit_url_from_folder(docu_path, with_docu_part: bool = True, docu_part_default: str = 'docs'):
    commit_url = ''
-   if os.getenv("READTHEDOCS", default = False):
-
-      print('running on readthedocs CI')
-      print('got docupath: ' + str(docu_path))
-      my_url = os.getenv("READTHEDOCS_GIT_CLONE_URL", default = '')
-      remove_from_end =['.git/', '.git']
-      for r in remove_from_end:
-         if my_url.endswith(r):
-            my_url = my_url[:-len(r)]
-            break
-      print('got base url: ' + str(my_url))
-      my_hoster = get_hoster_from_url(my_url)
-      print('got hoster: ' + str(my_hoster))
-      my_branch = os.getenv("READTHEDOCS_VERSION", default = '')
-      print('got branch: ' + str(my_branch))
-      my_repo_path = os.getenv("READTHEDOCS_VIRTUALENV_PATH", default = '')
-      print('got repopath: ' + str(my_repo_path))
-      my_docu_part = os.getenv("DOCS_FOLDER_IN_REPO", default = docu_part_default)
-      print('got docu part of path: ' + str(my_docu_part))
+   try:
+      if os.getenv("READTHEDOCS", default = False):
+         print('running on readthedocs CI')
+         print('got docupath: ' + str(docu_path))
+         my_url = os.getenv("READTHEDOCS_GIT_CLONE_URL", default = '')
+         remove_from_end =['.git/', '.git']
+         for r in remove_from_end:
+            if my_url.endswith(r):
+               my_url = my_url[:-len(r)]
+               break
+         print('got base url: ' + str(my_url))
+         my_hoster = get_hoster_from_url(my_url)
+         print('got hoster: ' + str(my_hoster))
+         my_branch = os.getenv("READTHEDOCS_VERSION_NAME", default = '')
+         print('got branch: ' + str(my_branch))
+         my_repo_path = os.getenv("READTHEDOCS_VIRTUALENV_PATH", default = '')
+         print('got repopath: ' + str(my_repo_path))
+         my_docu_part = os.getenv("DOCS_FOLDER_IN_REPO", default = docu_part_default)
+         print('got docu part of path: ' + str(my_docu_part))
+      else:
+         my_repo = find_repo(docu_path)
+         #print('got repo: ' + str(my_repo))
+         my_url = get_base_url_from_repo(my_repo)
+         #print('got base url: ' + str(my_url))
+         my_hoster = get_hoster_from_url(my_url)
+         #print('got hoster: ' + str(my_hoster))
+         my_branch = get_branch_from_repo(my_repo)
+         #print('got branch: ' + str(my_branch))
+         #my_commit = get_commit_from_repo(my_repo)
+         #print('got commit: ' + str(my_commit))
+         #my_hexsha = get_hexsha_from_commit(my_commit)
+         #print('got hexsha: ' + str(my_hexsha))
+         my_repo_path= get_repo_path_from_repo(my_repo)
+         #print('got repopath: ' + str(my_repo_path))
+         my_docu_part = get_docu_part_from_repo_path(docu_path, my_repo_path)
+         #print('got docu part of path: ' + str(my_docu_part))
 
       commit_url = my_url
       if my_hoster == 'github':
@@ -98,31 +115,6 @@ def get_edit_url_from_folder(docu_path, with_docu_part: bool = True, docu_part_d
          if with_docu_part:
             if not my_docu_part.startswith('/'):
                my_docu_part = '/' + my_docu_part
-            commit_url = commit_url + my_docu_part
-      return commit_url
-
-   try:
-      my_repo = find_repo(docu_path)
-      #print('got repo: ' + str(my_repo))
-      my_url = get_base_url_from_repo(my_repo)
-      #print('got base url: ' + str(my_url))
-      my_hoster = get_hoster_from_url(my_url)
-      #print('got hoster: ' + str(my_hoster))
-      my_branch = get_branch_from_repo(my_repo)
-      #print('got branch: ' + str(my_branch))
-      #my_commit = get_commit_from_repo(my_repo)
-      #print('got commit: ' + str(my_commit))
-      #my_hexsha = get_hexsha_from_commit(my_commit)
-      #print('got hexsha: ' + str(my_hexsha))
-      my_repo_path= get_repo_path_from_repo(my_repo)
-      #print('got repopath: ' + str(my_repo_path))
-      my_docu_part = get_docu_part_from_repo_path(docu_path, my_repo_path)
-      #print('got docu part of path: ' + str(my_docu_part))
-
-      commit_url = my_url
-      if my_hoster == 'github':
-         commit_url = commit_url + '/edit/' + my_branch
-         if with_docu_part:
             commit_url = commit_url + my_docu_part
    finally:
       return commit_url
