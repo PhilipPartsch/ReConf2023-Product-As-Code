@@ -313,9 +313,9 @@ needs_render_context = {
 needs_warnings = {
     'artifact_without_stored_in_link': "type == 'artifact' and len(stored_in) == 0",
     'stakeholder_requirement_without_author': "type == 'stake_req' and not author",
-    #'author_only_allowed_for_stakeholder_requirement': "type != 'stake_req' and author",
+    'author_only_allowed_for_stakeholder_requirement': "type != 'stake_req' and author != ''",
     'evaluation_output_and_evaluated_needed': "type == 'evaluation' and (len(output) == 0 or len(evaluated) == 0)",
-    'invalid_status' : "status and status not in ['accepted', 'implemented', 'verified']",
+    'invalid_status' : "status is not None and status not in ['accepted', 'implemented', 'verified']",
 }
 
 

@@ -8,7 +8,7 @@ sphinxcontrib-programoutput
 sphinx-design
 click
 tabulate
-sphinx-immaterial==0.7.3
+sphinx-immaterial
 sphinx-rtd-theme
 esbonio>=0.13.0
 sphinx-test-reports

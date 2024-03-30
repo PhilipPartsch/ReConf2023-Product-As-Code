@@ -53,6 +53,7 @@ extensions = [
     'sphinxcontrib.collections',
     'sphinxcontrib.jquery', # https://github.com/sphinx-contrib/jquery
     'sphinx_preview',
+    #'sphinx_immaterial',
 ]
 
 templates_path = ['_templates']
@@ -77,10 +78,10 @@ preview_config = {
     # This is very theme and HTML specific. In this case "div-mo-content" is the content area
     # and we handle all links there.
     #"selector": "div.md-content a",
+    "selector": "div.body a",
     # A list of selectors, where no preview icon shall be added, because it makes often no sense.
     # For instance the own ID of a need object, or the link on an image to open the image.
     "not_selector": "div.needs_head a, h1 a, h2 a, a.headerlink, a.md-content__button, a.image-reference, em.sig-param a, a.paginate_button",
-    "selector": "div.body a",
     #"not_selector": "div.needs_head a, h1 a, h2 a",
     "set_icon": True,
     "icon_only": True,
@@ -100,7 +101,7 @@ preview_config = {
 
 #html_theme = 'sphinx_rtd_theme'
 html_theme = 'alabaster'
-
+#html_theme = 'sphinx_immaterial'
 
 html_css_files = ['custom.css']
 
