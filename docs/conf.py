@@ -113,6 +113,13 @@ html_static_path = ['_static']
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
 
+# -- get edit url for git hoster
+print('edit url to git hoster:')
+import pathlib
+current_folder = pathlib.Path().resolve()
+git_hoster_edit_url = get_edit_url_from_folder(current_folder, with_docu_part = True, docu_part_default = 'docs')
+print(git_hoster_edit_url)
+
 # -- Collections
 # For debugging it is possible to disable the clean up after sphinx-build
 # collections_final_clean = False
@@ -124,13 +131,6 @@ collections = {}
 import json
 # relative from here: _static/_external_data/coverage.json
 test_coverage_file = os.path.join(os.path.dirname(__file__), '_static', '_external_data', 'coverage.json')
-
-print('edit url to git hoster:')
-import pathlib
-current_folder = pathlib.Path().resolve()
-git_hoster_edit_url = get_edit_url_from_folder(current_folder, with_docu_part = True, docu_part_default = 'docs')
-print(git_hoster_edit_url)
-
 if os.path.exists(test_coverage_file):
     f = open(test_coverage_file)
     json_data = json.load(f)

@@ -226,8 +226,9 @@ needs_layouts = {
             "head": [
                 '<<meta("type_name")>>: **<<meta("title")>>** <<meta_id()>>  <<collapse_button("meta", '
                 'collapsed="icon:arrow-down-circle", visible="icon:arrow-right-circle", initial=False)>>   '
-                '<<link(url="github_edit_url", image_url="icon:edit", image_height=17, is_dynamic=True)>>'
+                '<<link(url="github_edit_url", image_url="icon:edit", is_dynamic=True)>>'
             ],
+            #image_height=17,
             "meta": ['<<meta_all(no_links=True, exclude=["layout", "github_edit_url"])>>', '<<meta_links_all()>>'],
         },
     },
