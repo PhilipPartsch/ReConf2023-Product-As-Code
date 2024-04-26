@@ -183,8 +183,6 @@ needs_services = metamodel.needs_services
 
 needs_layouts = metamodel.needs_layouts
 
-needs_functions = metamodel.needs_functions
-
 needs_global_options = metamodel.needs_global_options
 
 needs_render_context = metamodel.needs_render_context
@@ -199,4 +197,7 @@ def setup(app):
     app.add_config_value(name = 'gitlink_edit_url_to_git_hoster', default = git_hoster_edit_url, rebuild = '', types = [str])
 
     add_dynamic_function(app, get_githoster_edit_url_for_need)
+
+    for func in metamodel.needs_functions:
+        add_dynamic_function(app, func)
 
