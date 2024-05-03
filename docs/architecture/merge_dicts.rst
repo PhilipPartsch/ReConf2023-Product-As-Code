@@ -2,6 +2,12 @@
 Architecture: merge_dicts
 #########################
 
+.. arch_module:: Json Lib
+   :id: M_JSON_LIB
+   :satisfies: SWRQ_TOOL_merge_dicts, SWRQ_MERGE_DICTS
+   :implements: IF_MERGE_DICTS
+
+   this is an exmaple.
 
 .. arch_module:: merge_dicts
    :id: M_MERGE_DICTS
