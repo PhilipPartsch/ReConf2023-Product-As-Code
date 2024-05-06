@@ -314,7 +314,7 @@ def fetch_elements(app, need, needs, *args, **kwargs):
     if 'filter' in kwargs:
         filter = kwargs['filter']
         import inspect
-        signature = inspect.signature(filter_needs))
+        signature = inspect.signature(filter_needs)
         if 'location' is in signature:
             linked = filter_needs(
                 needs.values(),
