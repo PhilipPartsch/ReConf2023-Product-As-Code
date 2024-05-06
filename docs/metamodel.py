@@ -312,7 +312,7 @@ def fetch_elements(app, need, needs, *args, **kwargs):
             linked.append(nd['id'])
     return linked
 
-needs_functions = [check_verified]
+needs_functions = [check_verified, fetch_elements]
 
 needs_global_options = {
     'test_status': [
