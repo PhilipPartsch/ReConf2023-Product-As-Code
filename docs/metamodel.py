@@ -307,7 +307,7 @@ def fetch_elements(app, need, needs, *args, **kwargs):
     :return: str,int,float or list of elements of type str,int,float
     """
     linked = []
-    for nd in needs:
+    for nd in needs.values():
         if nd['type'] == "sw_req":
             linked.append(nd['id'])
     return linked
