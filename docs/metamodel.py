@@ -316,7 +316,7 @@ def fetch_elements(app, need, needs, *args, **kwargs):
         import inspect
         filter_needs_signature = inspect.signature(filter_needs)
         if 'location' in filter_needs_signature.parameters:
-            linked = filter_needs(
+            linked_needs = filter_needs(
                 needs.values(),
                 NeedsSphinxConfig(app.config),
                 filter,
@@ -324,12 +324,14 @@ def fetch_elements(app, need, needs, *args, **kwargs):
                 location=(need["docname"], need["lineno"]) if need["docname"] else None,
             )
         else:
-            linked = filter_needs(
+            linked_needs = filter_needs(
                 needs.values(),
                 NeedsSphinxConfig(app.config),
                 filter,
                 need
             )
+
+        linked = [nd['id'] for nd in linked_needs]
     else:
         for nd in needs.values():
             if nd['type'] == "sw_req":
