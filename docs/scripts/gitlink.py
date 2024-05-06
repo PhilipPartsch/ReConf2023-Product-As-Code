@@ -91,21 +91,21 @@ def get_edit_url_from_folder(docu_path, with_docu_part: bool = True, docu_part_d
          print('got docu part of path: ' + str(my_docu_part))
       else:
          my_repo = find_repo(docu_path)
-         #print('got repo: ' + str(my_repo))
+         print('got repo: ' + str(my_repo))
          my_url = get_base_url_from_repo(my_repo)
-         #print('got base url: ' + str(my_url))
+         print('got base url: ' + str(my_url))
          my_hoster = get_hoster_from_url(my_url)
-         #print('got hoster: ' + str(my_hoster))
+         print('got hoster: ' + str(my_hoster))
          my_branch = get_branch_from_repo(my_repo)
-         #print('got branch: ' + str(my_branch))
+         print('got branch: ' + str(my_branch))
          #my_commit = get_commit_from_repo(my_repo)
          #print('got commit: ' + str(my_commit))
          #my_hexsha = get_hexsha_from_commit(my_commit)
          #print('got hexsha: ' + str(my_hexsha))
          my_repo_path= get_repo_path_from_repo(my_repo)
-         #print('got repopath: ' + str(my_repo_path))
+         print('got repopath: ' + str(my_repo_path))
          my_docu_part = get_docu_part_from_repo_path(docu_path, my_repo_path)
-         #print('got docu part of path: ' + str(my_docu_part))
+         print('got docu part of path: ' + str(my_docu_part))
 
       commit_url = my_url
       if my_hoster == 'github':
