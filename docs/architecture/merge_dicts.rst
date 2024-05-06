@@ -5,7 +5,6 @@ Architecture: merge_dicts
 
 .. bin:: merge_dicts
     :id: BIN_MERGE_DICTS
-    :satisfies: [[fetch_elements()]]
 
 
 .. package:: merge_dicts
