@@ -312,8 +312,8 @@ def fetch_elements(app, need, needs, *args, **kwargs):
     """
     linked = []
     if 'filter' in kwargs:
-      filter = kwargs['filter']  
-      linked = filter_needs(
+        filter = kwargs['filter']  
+        linked = filter_needs(
             needs.values(),
             NeedsSphinxConfig(app.config),
             filter,
