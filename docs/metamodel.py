@@ -302,7 +302,7 @@ def check_verified(app, need, needs, *args, **kwargs):
     else:
         return ''
 
-def fetch_elements(app, need, needs, filter: str | None = None):
+def fetch_elements(app, need, needs, *args, **kwargs):
     """
     :param app: sphinx app
     :param need: current need
@@ -311,8 +311,9 @@ def fetch_elements(app, need, needs, filter: str | None = None):
     :return: str,int,float or list of elements of type str,int,float
     """
     linked = []
-    if filter:
-        linked = filter_needs(
+    if 'filter' in kwargs:
+      filter = kwargs['filter']  
+      linked = filter_needs(
             needs.values(),
             NeedsSphinxConfig(app.config),
             filter,
