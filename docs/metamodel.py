@@ -313,18 +313,23 @@ def fetch_elements(app, need, needs, *args, **kwargs):
     linked = []
     if 'filter' in kwargs:
         filter = kwargs['filter']
-        print('filter: ' + str(filter))
-        filter = 'type == "sw_req"'
         import inspect
-        print('signature of filter_needs:')
-        print(inspect.signature(filter_needs))
-        linked = filter_needs(
-            needs.values(),
-            NeedsSphinxConfig(app.config),
-            filter,
-            need,
-            location=(need["docname"], need["lineno"]) if need["docname"] else None,
-        )
+        signature = inspect.signature(filter_needs))
+        if 'location' is in signature:
+            linked = filter_needs(
+                needs.values(),
+                NeedsSphinxConfig(app.config),
+                filter,
+                need,
+                location=(need["docname"], need["lineno"]) if need["docname"] else None,
+            )
+        else:
+            linked = filter_needs(
+                needs.values(),
+                NeedsSphinxConfig(app.config),
+                filter,
+                need
+            )
     else:
         for nd in needs.values():
             if nd['type'] == "sw_req":
