@@ -315,7 +315,7 @@ def fetch_elements(app, need, needs, *args, **kwargs):
         filter = kwargs['filter']
         import inspect
         signature = inspect.signature(filter_needs)
-        if 'location' is in signature:
+        if 'location' in signature:
             linked = filter_needs(
                 needs.values(),
                 NeedsSphinxConfig(app.config),
