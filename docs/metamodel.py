@@ -315,6 +315,9 @@ def fetch_elements(app, need, needs, *args, **kwargs):
         filter = kwargs['filter']
         print('filter: ' + str(filter))
         filter = 'type == "sw_req"'
+        import inspect
+        print('signature of filter_needs:')
+        print(inspect.signature(filter_needs))
         linked = filter_needs(
             needs.values(),
             NeedsSphinxConfig(app.config),
