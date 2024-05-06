@@ -2,6 +2,8 @@
 
 import os
 import sys
+from sphinx_needs import __version__
+print ('sphinx-needs version: ' + str(__version__))
 from sphinx_needs.api import add_dynamic_function
 
 sys.path.append(os.path.abspath('.'))
