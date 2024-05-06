@@ -2,9 +2,16 @@
 Architecture: merge_dicts
 #########################
 
+
+.. bin:: merge_dicts
+    :id: BIN_MERGE_DICTS
+    :satisfies: [[fetch_elements()]]
+
+
 .. package:: merge_dicts
     :id: P_MERGE_DICTS
     :satisfies: [[fetch_elements()]]
+
 
 .. arch_module:: merge_dicts
    :id: M_MERGE_DICTS
