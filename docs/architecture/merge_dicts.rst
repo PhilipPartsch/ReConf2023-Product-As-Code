@@ -9,7 +9,7 @@ Architecture: merge_dicts
 
 .. package:: merge_dicts
     :id: P_MERGE_DICTS
-    :satisfies: [[fetch_elements(filter = "type == 'evaluation'")]]
+    :satisfies: [[fetch_elements(filter = "type == 'sw_req'")]]
 
 
 .. arch_module:: merge_dicts
