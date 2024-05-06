@@ -1,4 +1,4 @@
-# use it with: pytest -s test_githoster.py
+# use it with: pytest -s test_gitlink.py
 import sys
 import os
 sys.path.append(os.path.abspath('.'))
