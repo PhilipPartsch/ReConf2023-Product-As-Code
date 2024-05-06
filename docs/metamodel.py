@@ -312,7 +312,9 @@ def fetch_elements(app, need, needs, *args, **kwargs):
     """
     linked = []
     if 'filter' in kwargs:
-        filter = kwargs['filter']  
+        filter = kwargs['filter']
+        print('filter: ' + str(filter))
+        filter = 'type == "sw_req"'
         linked = filter_needs(
             needs.values(),
             NeedsSphinxConfig(app.config),
