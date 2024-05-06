@@ -299,6 +299,19 @@ def check_verified(app, need, needs, *args, **kwargs):
     else:
         return ''
 
+def fetch_elements(app, need, needs, *args, **kwargs):
+    """
+    :param app: sphinx app
+    :param need: current need
+    :param needs: dictionary of all needs. Key is the need id
+    :return: str,int,float or list of elements of type str,int,float
+    """
+    linked = []
+    for nd in needs:
+        if nd['type'] == "sw_req":
+            linked.append(nd['id'])
+    return linked
+
 needs_functions = [check_verified]
 
 needs_global_options = {
