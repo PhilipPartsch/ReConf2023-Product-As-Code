@@ -120,7 +120,7 @@ print('edit url to git hoster:')
 import pathlib
 current_folder = pathlib.Path().resolve()
 git_hoster_edit_url = get_edit_url_from_folder(current_folder, with_docu_part = True, docu_part_default = 'docs')
-print(git_hoster_edit_url)
+print('git hoster edit url: ' + git_hoster_edit_url)
 
 # -- Collections
 # For debugging it is possible to disable the clean up after sphinx-build
