@@ -2,11 +2,6 @@
 Architecture: merge_dicts
 #########################
 
-
-.. bin:: merge_dicts
-    :id: BIN_MERGE_DICTS
-
-
 .. package:: merge_dicts
     :id: P_MERGE_DICTS
     :satisfies: [[fetch_elements(filter = "type == 'sw_req'")]]
