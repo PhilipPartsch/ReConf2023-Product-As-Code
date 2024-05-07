@@ -348,9 +348,6 @@ needs_global_options = {
     'post_template': [
         ('evaluation_post_template', 'type=="evaluation"'),
     ],
-    'satisfies': [
-        ('[[fetch_elements()]]', 'type=="bin"'),
-    ],
     'github_edit_url': '[[get_githoster_edit_url_for_need("id")]]',
 }
 
