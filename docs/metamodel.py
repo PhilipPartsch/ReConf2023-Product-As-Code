@@ -333,9 +333,8 @@ def fetch_elements(app, need, needs, *args, **kwargs):
 
         linked = [nd['id'] for nd in linked_needs]
     else:
-        for nd in needs.values():
-            if nd['type'] == "sw_req":
-                linked.append(nd['id'])
+        import warnings
+        warnings.warn("fetch_elements function called without a filter parameter")
         
     return linked
 
