@@ -60,3 +60,11 @@ Overview
    :show_link_names:
    :show_filters:
 
+
+**Example for reporting / Tables**
+
+.. needtable:: List of software requirements
+   :types: sw_req
+   :columns: id;title;docname as "document";lineno as "line no"
+   :style: datatables
+   :sort: docname;lineno
