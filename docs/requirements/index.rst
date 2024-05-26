@@ -66,5 +66,4 @@ Overview
 .. needtable:: List of software requirements
    :types: sw_req
    :columns: id;title;docname as "document";lineno as "line no"
-   :style: datatables
    :sort: lineno
