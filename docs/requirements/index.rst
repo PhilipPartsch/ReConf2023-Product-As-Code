@@ -67,4 +67,4 @@ Overview
    :types: sw_req
    :columns: id;title;docname as "document";lineno as "line no"
    :style: datatables
-   :sort: docname;lineno
+   :sort: lineno
