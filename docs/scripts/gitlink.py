@@ -1,5 +1,7 @@
 # With this scripting we want to generate links to hoster like:
 # https://github.com/PhilipPartsch/ReConf2023-Product-As-Code/edit/main/docs/requirements/software_specification.rst#L45
+# https://gitlab.com/PhilipPartsch/reconf2023-product-as-code/-/blob/main/docs/requirements/software_specification.rst#L5
+# https://gitlab.com/PhilipPartsch/reconf2023-product-as-code/-/blob/requirements/software_specification.rst#L5
 
 from git import Repo
 from pathlib import Path
@@ -109,11 +111,26 @@ def get_edit_url_from_folder(docu_path, with_docu_part: bool = True, docu_part_d
 
       commit_url = my_url
       if my_hoster == 'github':
-         commit_url = commit_url + '/edit/' + my_branch
+         commit_url = commit_url + '/edit/'
+         if my_branch == None:
+            commit_url = commit_url + 'main'
+         else:
+            commit_url = commit_url + my_branch
          if with_docu_part:
             if not my_docu_part.startswith('/'):
                my_docu_part = '/' + my_docu_part
             commit_url = commit_url + my_docu_part
+      elif my_hoster == 'gitlab':
+         commit_url = commit_url + '/-/blob/'
+         if my_branch == None:
+            commit_url = commit_url + 'main'
+         else:
+            commit_url = commit_url + my_branch
+         if with_docu_part:
+            if not my_docu_part.startswith('/'):
+               my_docu_part = '/' + my_docu_part
+            commit_url = commit_url + my_docu_part
+
    finally:
       return commit_url
 

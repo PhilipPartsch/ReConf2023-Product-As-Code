@@ -7,6 +7,9 @@
 
 # Official language image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/python/tags/
+
+#image: danwos/sphinxneeds-latexpdf:latest
+#image: danwos/sphinxneeds:latest
 image: python:latest
 
 # Change pip's cache directory to be inside the project directory since we can
@@ -20,13 +23,16 @@ cache:
     - .cache/pip
 
 before_script:
-  - python --version ; pip --version # For debugging
+  - python --version ; pip --version ; whoami # For debugging
   - pip install virtualenv
   - virtualenv venv
   - source venv/bin/activate
+  - pip install setuptools
   # install script requirements
   # pip install -r ./requirements.txt
   - pip install .
+  - apt update
+  - apt-get --yes install graphviz default-jdk
 
 test:
   stage: test
@@ -35,16 +41,25 @@ test:
     - pip install pytest
     - pip install pytest-reportlog
     - coverage run --branch --data-file=./docs/_static/_external_data/coverage.file -m pytest ./tests/ --junitxml=./docs/_static/_external_data/merge_dicts_test_results.xml --report-log=./docs/_static/_external_data/merge_dicts_test_log.json
-    - coverage html --data-file=./docs/_static/_external_data/coverage.file -d ./docs/_static/_external_data/coverage_html
-    - coverage json --data-file=./docs/_static/_external_data/coverage.file -o ./docs/_static/_external_data/coverage.json
     - coverage xml --data-file=./docs/_static/_external_data/coverage.file -o ./docs/_static/_external_data/coverage.xml
+    - coverage json --data-file=./docs/_static/_external_data/coverage.file -o ./docs/_static/_external_data/coverage.json
+    - coverage html --data-file=./docs/_static/_external_data/coverage.file -d ./docs/_static/_external_data/coverage_html
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: ./docs/_static/_external_data/coverage.xml
+      junit: ./docs/_static/_external_data/merge_dicts_test_results.xml
+    name: "test_results"
+    paths:
+      - ./docs/_static/_external_data/
 
 pages_test:
   stage: test
   script:
     # install documentation requirements
     - pip install -r ./docs/requirements.txt
-    - sphinx-build -b html ./docs ./public
+    - sphinx-build -W -b html ./docs ./public
   rules:
     - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
 
@@ -53,7 +68,7 @@ pages:
   script:
     # install documentation requirements
     - pip install -r ./docs/requirements.txt
-    - sphinx-build -b html ./docs ./public
+    - sphinx-build -W -b html ./docs ./public
   artifacts:
     paths:
     - public

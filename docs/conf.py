@@ -165,6 +165,8 @@ if on_rtd:
 else:
     plantuml = f"java -jar {local_plantuml_path}"
 
+print('plantuml path: ' + str(plantuml))
+
 plantuml_output_format = 'svg'
 
 # sphinx_needs configuration
