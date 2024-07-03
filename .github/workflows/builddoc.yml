@@ -1,5 +1,8 @@
 name: Render documentation
 
+# see https://github.com/actions/setup-python#using-setup-python-with-a-self-hosted-runner
+# for artifact handling and SBOM: https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts
+
 on:
   push:
   #pull_request:
@@ -27,6 +30,7 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: "3"
+        cache: 'pip' # caching pip dependencies
     - name: print versions for debugging
       run: python --version ; pip --version ; whoami
     - name: Install graphviz
@@ -37,12 +41,32 @@ jobs:
         python -m pip install setuptools
         python -m pip install -r ./docs/requirements.txt
         python -m pip install .
-    - name: run pytest
+    - name: Test with pytest
       run: |
         coverage run --branch --data-file=./docs/_static/_external_data/coverage.file -m pytest ./tests/ --junitxml=./docs/_static/_external_data/merge_dicts_test_results.xml --report-log=./docs/_static/_external_data/merge_dicts_test_log.json
         coverage xml --data-file=./docs/_static/_external_data/coverage.file -o ./docs/_static/_external_data/coverage.xml
         coverage json --data-file=./docs/_static/_external_data/coverage.file -o ./docs/_static/_external_data/coverage.json
         coverage html --data-file=./docs/_static/_external_data/coverage.file -d ./docs/_static/_external_data/coverage_html
+    - name: Archive pytest test results
+      uses: actions/upload-artifact@v4
+      with:
+        name: pytest-results
+        path:
+          ./docs/_static/_external_data/merge_dicts_test_results.xml
+          ./docs/_static/_external_data/merge_dicts_test_log.json
+      # Use always() to always run this step to publish test results when there are test failures
+      if: ${{ always() }}
+    - name: Archive code coverage results
+      uses: actions/upload-artifact@v4
+      with:
+        name: code-coverage-report
+        path:
+          ./docs/_static/_external_data/coverage.file
+          ./docs/_static/_external_data/coverage.xml
+          ./docs/_static/_external_data/coverage.json
+          ./docs/_static/_external_data/coverage_html
+      # Use always() to always run this step to publish test results when there are test failures
+      if: ${{ always() }}
     - name: Setup Pages
       id: pages
       uses: actions/configure-pages@v5
