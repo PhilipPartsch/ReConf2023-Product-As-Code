@@ -1,7 +1,3 @@
-#########
-X-As-Code
-#########
-
 .. include:: ../README.rst
 
 **merge_dicts** is a Python library to merge `dictionaries
