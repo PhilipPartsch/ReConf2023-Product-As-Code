@@ -1,0 +1,50 @@
+name: Render documentation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+env:
+  FORCE_COLOR: "1"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3"
+    - name: print versions for debugging
+      run: python --version ; pip --version ; whoami
+    - name: Install graphviz
+      run: sudo apt-get install graphviz default-jdk
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install -r ./docs/requirements.txt
+    - name: run pytest
+      run: |
+        python coverage run --branch --data-file=./docs/_static/_external_data/coverage.file -m pytest ./tests/ --junitxml=./docs/_static/_external_data/merge_dicts_test_results.xml --report-log=./docs/_static/_external_data/merge_dicts_test_log.json
+        python coverage xml --data-file=./docs/_static/_external_data/coverage.file -o ./docs/_static/_external_data/coverage.xml
+        python coverage json --data-file=./docs/_static/_external_data/coverage.file -o ./docs/_static/_external_data/coverage.json
+        python coverage html --data-file=./docs/_static/_external_data/coverage.file -d ./docs/_static/_external_data/coverage_html
+    - name: Render the documentation
+      run: >
+        sphinx-build
+        -M html ./docs ./build/sphinx
+        -vv
+        --jobs=auto
+        --show-traceback
+        --fail-on-warning
+        --keep-going
