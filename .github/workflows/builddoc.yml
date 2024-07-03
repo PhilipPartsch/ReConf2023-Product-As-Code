@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
@@ -41,12 +43,31 @@ jobs:
         coverage xml --data-file=./docs/_static/_external_data/coverage.file -o ./docs/_static/_external_data/coverage.xml
         coverage json --data-file=./docs/_static/_external_data/coverage.file -o ./docs/_static/_external_data/coverage.json
         coverage html --data-file=./docs/_static/_external_data/coverage.file -d ./docs/_static/_external_data/coverage_html
+    - name: Setup Pages
+      id: pages
+      uses: actions/configure-pages@v5
     - name: Render the documentation
       run: >
         sphinx-build
-        -M html ./docs ./build/sphinx
+        -M html ./docs ./public
         -vv
         --jobs=auto
         --show-traceback
         --fail-on-warning
         --keep-going
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+          path: ./public
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
