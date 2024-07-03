@@ -51,7 +51,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: pytest-results
-        path:
+        path: |
           ./docs/_static/_external_data/merge_dicts_test_results.xml
           ./docs/_static/_external_data/merge_dicts_test_log.json
       # Use always() to always run this step to publish test results when there are test failures
@@ -60,7 +60,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: code-coverage-report
-        path:
+        path: |
           ./docs/_static/_external_data/coverage.file
           ./docs/_static/_external_data/coverage.xml
           ./docs/_static/_external_data/coverage.json
