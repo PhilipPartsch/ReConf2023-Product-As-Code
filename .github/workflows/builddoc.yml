@@ -35,10 +35,10 @@ jobs:
         python -m pip install -r ./docs/requirements.txt
     - name: run pytest
       run: |
-        python coverage run --branch --data-file=./docs/_static/_external_data/coverage.file -m pytest ./tests/ --junitxml=./docs/_static/_external_data/merge_dicts_test_results.xml --report-log=./docs/_static/_external_data/merge_dicts_test_log.json
-        python coverage xml --data-file=./docs/_static/_external_data/coverage.file -o ./docs/_static/_external_data/coverage.xml
-        python coverage json --data-file=./docs/_static/_external_data/coverage.file -o ./docs/_static/_external_data/coverage.json
-        python coverage html --data-file=./docs/_static/_external_data/coverage.file -d ./docs/_static/_external_data/coverage_html
+        coverage run --branch --data-file=./docs/_static/_external_data/coverage.file -m pytest ./tests/ --junitxml=./docs/_static/_external_data/merge_dicts_test_results.xml --report-log=./docs/_static/_external_data/merge_dicts_test_log.json
+        coverage xml --data-file=./docs/_static/_external_data/coverage.file -o ./docs/_static/_external_data/coverage.xml
+        coverage json --data-file=./docs/_static/_external_data/coverage.file -o ./docs/_static/_external_data/coverage.json
+        coverage html --data-file=./docs/_static/_external_data/coverage.file -d ./docs/_static/_external_data/coverage_html
     - name: Render the documentation
       run: >
         sphinx-build
