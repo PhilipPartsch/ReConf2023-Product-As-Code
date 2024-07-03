@@ -49,7 +49,7 @@ jobs:
     - name: Render the documentation
       run: >
         sphinx-build
-        -M html ./docs ./public
+        -b html ./docs ./public
         -vv
         --jobs=auto
         --show-traceback
@@ -58,7 +58,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-          path: ./public
+        path: ./public
 
   # Deployment job
   deploy:
