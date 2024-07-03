@@ -2,6 +2,8 @@
 X-As-Code
 #########
 
+.. include:: ../README.rst
+
 **merge_dicts** is a Python library to merge `dictionaries
 <https://docs.python.org/3/tutorial/datastructures.html#dictionaries>`_.
 
