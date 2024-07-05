@@ -30,7 +30,7 @@ Overview
    type == 'evaluation'
 
 
-**Requiremennts & Status Overview**
+**Requirements & Status Overview**
 
 .. needbar:: Requirements & Status Overview
    :legend:
