@@ -121,7 +121,7 @@ def get_edit_url_from_folder(docu_path, with_docu_part: bool = True, docu_part_d
                my_docu_part = '/' + my_docu_part
             commit_url = commit_url + my_docu_part
       elif my_hoster == 'gitlab':
-         commit_url = commit_url + '/-/blob/'
+         commit_url = commit_url + '/-/edit/'
          if my_branch == None:
             commit_url = commit_url + 'main'
          else:
