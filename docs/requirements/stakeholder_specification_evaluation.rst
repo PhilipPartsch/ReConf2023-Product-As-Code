@@ -15,11 +15,12 @@ Stakeholder Specification Evaluation for Merge Python Dictionaries
 .. evaluation:: Explicit definition of "dictionaries"
    :id: EVAL_STAKE_MANY_DICTS
    :evaluated: CSTRQ_MERGE_DICTS
-   :output: SWRQ_MERGE_DICTS
+   :output: SWRQ_MERGE_DICTS, SWRQ_LIST_OF_DICTS
 
    The :need:`CSTRQ_MERGE_DICTS` does define to "merge dictionaries".
+   So we made it avaialbe it as software requirement, in :need:`SWRQ_MERGE_DICTS`.
    We want to make it more obvious that this means even `none`, `one`, `two` and `more` dictionaries.
-   Even we improve the description in the :need:`SWRQ_MERGE_DICTS` to explicit mention a
+   Even we improve the description in the :need:`SWRQ_LIST_OF_DICTS` to explicit mention a
    list of dictionaries.
 
 
