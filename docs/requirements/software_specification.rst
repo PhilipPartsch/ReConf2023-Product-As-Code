@@ -26,7 +26,7 @@ Specification for Merge Python Dictionaries
    :satisfies: CSTRQ_MERGE_DICTS
 
    The above defined function to merge dictionaries shall treat list as:
-   non, one, two or many dictionaries organized in a list.
+   none, one, two or many dictionaries organized in a list.
 
    .. verify:: Test function with appropriate number of dictionaries
       :id: VERIFY_SWRQ_LIST_OF_DICTS
