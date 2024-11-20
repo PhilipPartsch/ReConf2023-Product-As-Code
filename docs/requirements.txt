@@ -1,7 +1,7 @@
-sphinx>=4.0
+sphinx==7.4.7
 sphinxcontrib.jquery
 sphinxcontrib-plantuml
-sphinx-needs
+sphinx-needs==3.0.0
 matplotlib
 sphinx-copybutton
 sphinxcontrib-programoutput
@@ -11,9 +11,10 @@ tabulate
 sphinx-immaterial
 sphinx-rtd-theme
 esbonio>=0.13.0
-sphinx-test-reports
+sphinx-test-reports==1.0.2
 pytest
 pytest-reportlog
 coverage
 sphinx-collections
 sphinx-preview
+sphinx-lint

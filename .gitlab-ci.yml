@@ -59,6 +59,7 @@ pages_test:
   script:
     # install documentation requirements
     - pip install -r ./docs/requirements.txt
+    - sphinx-lint
     - sphinx-build -W -b html ./docs ./public
   rules:
     - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
@@ -68,6 +69,7 @@ pages:
   script:
     # install documentation requirements
     - pip install -r ./docs/requirements.txt
+    - sphinx-lint
     - sphinx-build -W -b html ./docs ./public
   artifacts:
     paths:

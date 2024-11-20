@@ -41,6 +41,9 @@ jobs:
         python -m pip install setuptools
         python -m pip install -r ./docs/requirements.txt
         python -m pip install .
+    - name: Lint the project with sphinx-lint
+      run: |
+        sphinx-lint
     - name: Test with pytest
       run: |
         coverage run --branch --data-file=./docs/_static/_external_data/coverage.file -m pytest ./tests/ --junitxml=./docs/_static/_external_data/merge_dicts_test_results.xml --report-log=./docs/_static/_external_data/merge_dicts_test_log.json
