@@ -59,7 +59,7 @@ class Test_Merge_Dicts:
         [c, merge_conflict] = merge_dicts(a,b)
         #print(c)
         #print(merge_conflict)
-        
+
         assert len(c) == 6
         assert ~merge_conflict
 
@@ -81,7 +81,7 @@ class Test_Merge_Dicts:
         [e, merge_conflict] = merge_dicts(a,d)
         #print(e)
         #print(merge_conflict)
-        
+
         assert len(e) == 5
         assert merge_conflict
 
@@ -103,7 +103,7 @@ class Test_Merge_Dicts:
         [g, merge_conflict] = merge_dicts(a,f)
         #print(g)
         #print(merge_conflict)
-        
+
         assert len(g) == 5
         assert ~merge_conflict
 
@@ -112,7 +112,7 @@ class Test_Merge_Dicts:
         we shall get an "AttributeError" exception."""
         h = ['a','b', 'c',]
         i = ['x','y', 'z',]
-        
+
         with pytest.raises(AttributeError):
             [j, merge_conflict] = merge_dicts(h,i)
 
@@ -123,17 +123,17 @@ class Test_Merge_Dicts:
         [l, merge_conflict] = merge_dicts(k)
         #print(l)
         #print(merge_conflict)
-        
+
         assert len(l) == 0
         assert ~merge_conflict
 
     def test_merge_dictionaries_no_parameter(self):
         """6. It shall be possible to give nothing to the function"""
-        
+
         [m, merge_conflict] = merge_dicts()
         #print(l)
         #print(merge_conflict)
-        
+
         assert len(m) == 0
         assert ~merge_conflict
 
@@ -155,7 +155,7 @@ class Test_Merge_Dicts:
         [o, merge_conflict] = merge_dicts(a,n)
         #print(o)
         #print(merge_conflict)
-        
+
         assert len(o) == 5
         assert o['b'] == 2
         assert merge_conflict
@@ -183,7 +183,7 @@ class Test_Merge_Dicts:
         [r, merge_conflict] = merge_dicts(a, p, q, )
         #print(r)
         #print(merge_conflict)
-        
+
         assert len(r) == 9
         assert ~merge_conflict
 

@@ -211,7 +211,7 @@ needs_extra_links = [
       "style_start": "-up",
       "style_end": "->",
    },
-   
+
    {
       "option": "implements",
       "incoming": "implemented by",
@@ -335,7 +335,7 @@ def fetch_elements(app, need, needs, *args, **kwargs):
     else:
         import warnings
         warnings.warn("fetch_elements function called without a filter parameter")
-        
+
     return linked
 
 needs_functions = [check_verified, fetch_elements]

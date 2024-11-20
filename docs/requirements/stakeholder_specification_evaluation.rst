@@ -43,9 +43,9 @@ Stakeholder Specification Evaluation for Merge Python Dictionaries
 
    The stakeholder requirements are not defining the behavior in
    case not valid input is provided.
-   
+
    So we define if we get something else than a list or empty list,
-   we ill indicate the appropriate python exception for invalid 
+   we ill indicate the appropriate python exception for invalid
    type: `AttributeError`
 
 
@@ -57,7 +57,7 @@ Stakeholder Specification Evaluation for Merge Python Dictionaries
 
    In some cases, a merge conflict is not stop sign.
    It is possible to proceed, if we define the merge behavior in such case:
-   
+
    If we have the same key in two dictionaries but different content,
    the first value shall be in the final dict.
 

@@ -151,10 +151,10 @@ def extent_url_with_file(url: str, docname_including_doctype:str = '', lineno: N
 
 def get_githoster_edit_url_for_need(app, need, needs, *args, **kwargs):
    # We could call every time get_edit_url_from_folder, but we have stored it in the conf,
-   # to call it only one. 
+   # to call it only one.
    github_edit_url = app.config.gitlink_edit_url_to_git_hoster
    github_edit_url_for_need = extent_url_with_file(
-      url = github_edit_url, 
+      url = github_edit_url,
       docname_including_doctype = need['docname'] + need['doctype'],
       lineno = need['lineno']
       )
@@ -167,7 +167,7 @@ def get_githoster_edit_url_for_file(file_with_path_inside_docu):
       path_inside_docu = file_with_path_inside_docu
    github_edit_url = get_edit_url_from_folder(path_inside_docu, with_docu_part = False)
    github_edit_url_for_file = extent_url_with_file(
-      url = github_edit_url, 
+      url = github_edit_url,
       docname_including_doctype = file_with_path_inside_docu,
       )
    return github_edit_url_for_file

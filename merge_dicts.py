@@ -7,7 +7,7 @@ __version__ = "0.1.0"
 def merge_dicts(*dict_args: [{}]) -> [{}, bool]:
     """
     merge_dicts: Given dictionaries are merge into a new dict.
-    
+
     :param kind: Optional "dict_args" as list of dict.
     :type kind: dict or list(dict) or None
     :raise AttributeError: If the dict_args is invalid.

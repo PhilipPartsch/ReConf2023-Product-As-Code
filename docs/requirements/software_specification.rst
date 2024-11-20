@@ -32,7 +32,7 @@ Specification for Merge Python Dictionaries
       :id: VERIFY_SWRQ_LIST_OF_DICTS
 
       Test function with:
-      
+
       - empty list
       - one dictionary in the list
       - two dictionary in the list
