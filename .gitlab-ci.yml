@@ -69,15 +69,10 @@ pages:
   script:
     # install documentation requirements
     - pip install -r ./docs/requirements.txt
-    - sphinx-lint
+    - sphinx-lint -i venv
     - sphinx-build -W -b html ./docs ./public
   artifacts:
     paths:
     - public
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-
-deploy:
-  stage: deploy
-  script: echo "Define your deployment script!"
-  environment: production
