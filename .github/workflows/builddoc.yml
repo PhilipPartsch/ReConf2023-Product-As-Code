@@ -99,3 +99,21 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  Push2Gitlab:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Push To Gitlab
+      env:
+        token: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+      run: |
+        echo Starting to push repo to gitlab
+        git config list
+        git config user.name "PhilipPartsch"
+        git config user.email "95444300+PhilipPartsch@users.noreply.github.com"
+        git remote add gitlab "https://PhilipPartsch:${token}@gitlab.com/PhilipPartsch/reconf2023-product-as-code.git"
+        git remote --verbose show gitlab
+        git config list
+        echo Finished push of repo to gitlab
+      #git push --mirror gitlab
