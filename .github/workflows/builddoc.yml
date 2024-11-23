@@ -117,5 +117,5 @@ jobs:
         echo Finished to configure git
         # git config list
         echo Call git push
-        # git push --mirror gitlab
+        git push --mirror gitlab
         echo Finished push of repo to gitlab
