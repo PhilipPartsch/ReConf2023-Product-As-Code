@@ -109,13 +109,16 @@ jobs:
         token: ${{ secrets.GITLAB_ACCESS_TOKEN }}
       run: |
         echo Starting to push repo to gitlab
-        # git config list
+        git config list
         echo Starting to configure git
         git config user.name "PhilipPartsch"
         git config user.email "95444300+PhilipPartsch@users.noreply.github.com"
         git remote add gitlab "https://PhilipPartsch:${token}@gitlab.com/PhilipPartsch/reconf2023-product-as-code.git"
+        git config remote.gitlab.push "+refs/heads/*:refs/heads/*"
+        git config remote.gitlab.push "+refs/tags/*:refs/tags/*"
+        git config remote.gitlab.push "+refs/change/*:refs/change/*"
         echo Finished to configure git
-        # git config list
+        git config list
         echo Unshallow from origin
         git fetch --unshallow origin
         echo Call git push
