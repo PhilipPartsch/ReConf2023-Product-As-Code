@@ -12,7 +12,7 @@ The following table shows the test specifications:
 The following table shows the software requirements not successful passed the tests:
 
 .. needtable::
-   :filter: "type == 'sw_req' and test_status == 'verified_passed'"
+   :filter: type == 'sw_req' and test_status == 'verified_passed'
    :columns: id, title
    :style: datatables
 
