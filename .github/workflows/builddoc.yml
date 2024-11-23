@@ -116,6 +116,8 @@ jobs:
         git remote add gitlab "https://PhilipPartsch:${token}@gitlab.com/PhilipPartsch/reconf2023-product-as-code.git"
         echo Finished to configure git
         # git config list
+        echo Unshallow from origin
+        git fetch --unshallow origin
         echo Call git push
         git push --mirror gitlab
         echo Finished push of repo to gitlab
