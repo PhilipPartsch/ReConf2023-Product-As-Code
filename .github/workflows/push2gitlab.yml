@@ -1,4 +1,4 @@
-name: Render documentation
+name: Push changes to gitlab
 
 on:
   push:
