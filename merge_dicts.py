@@ -2,7 +2,7 @@
 merge_dicts - Given dictionaries are merge into a new dict.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 def merge_dicts(*dict_args: [{}]) -> [{}, bool]:
     """

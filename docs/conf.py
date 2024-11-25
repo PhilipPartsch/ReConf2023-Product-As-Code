@@ -35,8 +35,8 @@ project = 'ReConf 2023 X-As-Code'
 copyright = f'2023 - {date.year}, PhilipPartsch'
 author = 'PhilipPartsch'
 
-release = '0.3'
-version = '0.3.2'
+release = '0.4'
+version = '0.4.0'
 
 # -- General configuration
 on_rtd = os.environ.get("READTHEDOCS") == "True"
@@ -101,8 +101,8 @@ preview_config = {
 
 # -- Options for HTML output
 
-html_theme = 'sphinx_rtd_theme'
-#html_theme = 'sphinx_immaterial'
+#html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinx_immaterial'
 #html_theme = 'alabaster' # Sphinx Defaul Theme
 
 # If we do perform a PDF build, we have to switch to alabaster
