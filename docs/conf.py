@@ -109,9 +109,19 @@ html_theme = 'sphinx_rtd_theme'
 if os.environ.get("PDF", 0) == 1:
     html_theme = 'alabaster' # Sphinx Defaul Theme
 
-#configure design according to used theme
+
+#configure design according to sphinx_rtd_theme theme
+if html_theme == 'sphinx_rtd_theme':
+    preview_config["selector"] = "div.rst-content a"
+    preview_config["not_selector"] = "div.needs_head a, h1 a, h2 a, a.headerlink, a.md-content__button, a.image-reference, em.sig-param a, a.paginate_button, a.sd-btn"
+
+
+#configure design according to sphinx_immaterial theme
 if html_theme == 'sphinx_immaterial':
     extensions.append("sphinx_immaterial")
+
+    preview_config["selector"] = "div.md-content a"
+    preview_config["not_selector"] = "div.needs_head a, h1 a, h2 a, a.headerlink, a.md-content__button, a.image-reference, em.sig-param a, a.paginate_button, a.sd-btn"
 
     html_theme_options = {
         "font": False,
