@@ -54,7 +54,7 @@ extensions = [
     'sphinxcontrib.test_reports',
     'sphinxcontrib.collections',
     'sphinxcontrib.jquery', # https://github.com/sphinx-contrib/jquery
-#    'sphinx_preview',
+    'sphinx_preview',
     'sphinx_immaterial',
 ]
 
@@ -75,30 +75,30 @@ exclude_patterns = ['_tools/*',]
 
 # The config for the preview features, which allows to "sneak" into a link.
 # Docs: https://sphinx-preview.readthedocs.io/en/latest/#configuration
-#preview_config = {
+preview_config = {
     # Add a preview icon only for this type of links
     # This is very theme and HTML specific. In this case "div-mo-content" is the content area
     # and we handle all links there.
-#    "selector": "div.md-content a",
+    "selector": "div.md-content a",
     #"selector": "div.body a",
     # A list of selectors, where no preview icon shall be added, because it makes often no sense.
     # For instance the own ID of a need object, or the link on an image to open the image.
     #"not_selector": "div.needs_head a, h1 a, h2 a, a.headerlink, a.md-content__button, a.image-reference, em.sig-param a, a.paginate_button",
     #"not_selector": "div.needs_head a, h1 a, h2 a, a.headerlink, a.md-content__button, a.image-reference, em.sig-param a, a.paginate_button, a.sd-btn",
     #"not_selector": "div.needs_head a, h1 a, h2 a",
-#    "set_icon": True,
-#    "icon_only": True,
-#    "icon_click": True,
-#    "icon": "🔎",
+    "set_icon": True,
+    "icon_only": True,
+    "icon_click": True,
+    "icon": "🔎",
     #"icon": "icon:search",
-#    "width": 600,
-#    "height": 400,
-#    "offset": {
-#        "left": 0,
-#        "top": 0
-#    },
-#    "timeout": 0,
-#}
+    "width": 600,
+    "height": 400,
+    "offset": {
+        "left": 0,
+        "top": 0
+    },
+    "timeout": 0,
+}
 
 # -- Options for HTML output
 
