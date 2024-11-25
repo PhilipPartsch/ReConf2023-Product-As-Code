@@ -20,7 +20,7 @@ Merge dictionaries
 
 To merge dictionaries, you can use the ``merge_dicts.merge_dicts()`` function:
 
-.. autofunction : : merge_dicts.merge_dicts
+.. autofunction:: merge_dicts.merge_dicts
 
 For example:
 
