@@ -102,12 +102,16 @@ preview_config = {
 # -- Options for HTML output
 
 #html_theme = 'sphinx_rtd_theme'
-html_theme = 'alabaster' # Sphinx Defaul Theme
+html_theme = 'sphinx_immaterial'
+#html_theme = 'alabaster' # Sphinx Defaul Theme
 
-# Set ``html_theme`` to ``sphinx_immaterial`` only, if we do NOT perform a PDF build.
-if os.environ.get("PDF", 0) != 1:
+# If we do perform a PDF build, we have to switch to alabaster
+if os.environ.get("PDF", 0) == 1:
+    html_theme = 'alabaster' # Sphinx Defaul Theme
+
+#configure design according to used theme
+if html_theme == 'sphinx_immaterial':
     extensions.append("sphinx_immaterial")
-    html_theme = 'sphinx_immaterial'
 
     html_theme_options = {
         "font": False,
