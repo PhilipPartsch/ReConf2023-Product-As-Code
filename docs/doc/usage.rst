@@ -24,7 +24,7 @@ To merge dictionaries, you can use the ``merge_dicts.merge_dicts()`` function:
 
 For example:
 
-.. code-block:: python
+.. code-block : : python
 
    import merge_dicts
    print(merge_dicts.merge_dicts())
