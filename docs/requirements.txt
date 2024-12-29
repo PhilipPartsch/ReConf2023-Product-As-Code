@@ -1,3 +1,4 @@
+vale
 sphinx==7.4.7
 sphinxcontrib.jquery
 sphinxcontrib-plantuml
