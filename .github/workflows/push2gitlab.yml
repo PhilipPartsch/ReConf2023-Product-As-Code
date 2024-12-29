@@ -18,12 +18,13 @@ env:
 jobs:
   Push2Gitlab:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     steps:
-    - uses: actions/checkout@v4
+    - name: Clone repo to github runner
+      uses: actions/checkout@v4
     - name: Push To Gitlab
       env:
         token: ${{ secrets.GITLAB_ACCESS_TOKEN }}
-      if: github.ref == 'refs/heads/main'
       run: |
         echo Starting to push repo to gitlab
         #git config list
