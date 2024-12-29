@@ -23,6 +23,7 @@ jobs:
     - name: Push To Gitlab
       env:
         token: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+      if: github.ref == 'refs/heads/main'
       run: |
         echo Starting to push repo to gitlab
         #git config list
