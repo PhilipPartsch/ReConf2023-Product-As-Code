@@ -1,0 +1,5 @@
+html
+rst
+xml
+json
+merge_dicts

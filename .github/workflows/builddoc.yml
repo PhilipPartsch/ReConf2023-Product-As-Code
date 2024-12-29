@@ -32,9 +32,13 @@ jobs:
         python-version: "3"
         cache: 'pip' # caching pip dependencies
     - name: print versions for debugging
-      run: python --version ; pip --version ; whoami
+      run: python --version ; pip --version ; whoami ; pwd
     - name: Install graphviz & default-jdk
-      run: sudo apt-get install graphviz default-jdk
+      run: |
+        sudo apt-get update
+        sudo apt-get upgrade --yes
+        sudo apt-get install graphviz default-jdk
+        sudo apt-get upgrade --yes
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -44,6 +48,11 @@ jobs:
     - name: Lint the project with sphinx-lint
       run: |
         sphinx-lint
+    - name: Lint the project with vale
+      uses: errata-ai/vale-action@v2.1.1
+      with:
+        # github-pr-check, github-pr-review, github-check
+        reporter: github-check
     - name: Test with pytest
       run: |
         coverage run --branch --data-file=./docs/_static/_external_data/coverage.file -m pytest ./tests/ --junitxml=./docs/_static/_external_data/merge_dicts_test_results.xml --report-log=./docs/_static/_external_data/merge_dicts_test_log.json
@@ -70,9 +79,6 @@ jobs:
           ./docs/_static/_external_data/coverage_html
       # Use always() to always run this step to publish test results when there are test failures
       if: ${{ always() }}
-    - name: Setup Pages
-      id: pages
-      uses: actions/configure-pages@v5
     - name: Render the documentation
       run: >
         sphinx-build
@@ -82,10 +88,13 @@ jobs:
         --show-traceback
         --fail-on-warning
         --keep-going
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
+    - name: Archive sphinx public folder
+      uses: actions/upload-artifact@v4
       with:
-        path: ./public
+        name: sphinx-public
+        path: |
+          ./public/
+
 
   # Deployment job
   deploy:
@@ -96,6 +105,19 @@ jobs:
     needs: build
     if: github.ref == 'refs/heads/main'
     steps:
+      - name: Download sphinx public folder
+        uses: actions/download-artifact@v4
+        with:
+          name: sphinx-public
+          path: ./public/
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
