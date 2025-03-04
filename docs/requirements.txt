@@ -1,8 +1,8 @@
 vale
-sphinx==7.4.7
+sphinx
 sphinxcontrib.jquery
 sphinxcontrib-plantuml
-sphinx-needs==3.0.0
+sphinx-needs
 matplotlib
 sphinx-copybutton
 sphinxcontrib-programoutput
@@ -12,7 +12,7 @@ tabulate
 sphinx-immaterial
 sphinx-rtd-theme
 esbonio>=0.13.0
-sphinx-test-reports==1.0.2
+sphinx-test-reports
 pytest
 pytest-reportlog
 coverage
