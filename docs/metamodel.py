@@ -350,10 +350,14 @@ from sphinx_needs.data import NeedsCoreFields
 
 myNeedsCoreFields = NeedsCoreFields
 
-patched_options = ['collapse', 'hide', 'template', 'pre_template', 'post_template', 'type_color', 'type_style']
+patched_options = [
+    ('collapse', 'bool'), ('hide', 'bool'), ('template', 'str'),
+    ('pre_template', 'str'), ('post_template', 'str'), ('type_color', 'str'),
+    ('type_style', 'str'),
+]
 
-for po in patched_options:
-    myNeedsCoreFields[po]["allow_default"] = "str"
+for po_name, po_type in patched_options:
+    myNeedsCoreFields[po_name]["allow_default"] = po_type
 
 NeedsCoreFields = myNeedsCoreFields
 
