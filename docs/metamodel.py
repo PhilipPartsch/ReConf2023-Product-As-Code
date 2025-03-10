@@ -347,9 +347,6 @@ needs_global_options = {
 }
 
 from sphinx_needs.data import NeedsCoreFields
-
-myNeedsCoreFields = NeedsCoreFields
-
 patched_options = [
     ('collapse', 'bool'), ('hide', 'bool'), ('template', 'str'),
     ('pre_template', 'str'), ('post_template', 'str'), ('type_color', 'str'),
@@ -357,9 +354,8 @@ patched_options = [
 ]
 
 for po_name, po_type in patched_options:
-    myNeedsCoreFields[po_name]["allow_default"] = po_type
-
-NeedsCoreFields = myNeedsCoreFields
+    #NeedsCoreFields[po_name]["allow_default"] = po_type
+    pass
 
 needs_render_context = {
 }
