@@ -355,7 +355,7 @@ patched_options = ['collapse', 'hide', 'template', 'pre_template', 'post_templat
 for po in patched_options:
     myNeedsCoreFields[po]["allow_default"] = "str"
 
-sphinx_needs.data.NeedsCoreFields = myNeedsCoreFields
+NeedsCoreFields = myNeedsCoreFields
 
 needs_render_context = {
 }
