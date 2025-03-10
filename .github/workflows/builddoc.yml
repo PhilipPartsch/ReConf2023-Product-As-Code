@@ -83,7 +83,6 @@ jobs:
       run: >
         sphinx-build
         -b html ./docs ./public
-        -vv
         --jobs=auto
         --show-traceback
         --fail-on-warning

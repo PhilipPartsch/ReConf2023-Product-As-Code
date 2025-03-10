@@ -346,16 +346,16 @@ needs_global_options = {
     'github_edit_url': {'default': '[[get_githoster_edit_url_for_need("id")]]'}
 }
 
-from sphinx_needs.data import SphinxNeedsData
+from sphinx_needs.data import NeedsCoreFields
 
-mySphinxNeedsData = SphinxNeedsData
+myNeedsCoreFields = NeedsCoreFields
 
 patched_options = ['collapse', 'hide', 'template', 'pre_template', 'post_template', 'type_color', 'type_style']
 
 for po in patched_options:
-    mySphinxNeedsData[po]["allow_default"] = "str"
+    myNeedsCoreFields[po]["allow_default"] = "str"
 
-sphinx_needs.data.SphinxNeedsData = mySphinxNeedsData
+sphinx_needs.data.NeedsCoreFields = myNeedsCoreFields
 
 needs_render_context = {
 }
