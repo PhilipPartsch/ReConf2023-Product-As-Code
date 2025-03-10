@@ -341,14 +341,21 @@ def fetch_elements(app, need, needs, *args, **kwargs):
 needs_functions = [check_verified, fetch_elements]
 
 needs_global_options = {
-    'test_status': [
-        ('[[check_verified()]]', 'type=="sw_req"'),
-    ],
-    'post_template': [
-        ('evaluation_post_template', 'type=="evaluation"'),
-    ],
-    'github_edit_url': '[[get_githoster_edit_url_for_need("id")]]',
+    'test_status': {'predicates': [('type=="sw_req"', '[[check_verified()]]')]},
+    'post_template': {'predicates': [('type=="evaluation"', 'evaluation_post_template')]},
+    'github_edit_url': {'default': '[[get_githoster_edit_url_for_need("id")]]'}
 }
+
+from sphinx_needs.data import SphinxNeedsData
+
+mySphinxNeedsData = SphinxNeedsData
+
+patched_options = ['collapse', 'hide', 'template', 'pre_template', 'post_template', 'type_color', 'type_style']
+
+for po in patched_options:
+    mySphinxNeedsData[po]["allow_default"] = "str"
+
+sphinx_needs.data.SphinxNeedsData = mySphinxNeedsData
 
 needs_render_context = {
 }
