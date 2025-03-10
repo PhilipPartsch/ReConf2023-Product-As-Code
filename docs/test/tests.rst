@@ -26,11 +26,6 @@ Test log for merge_dicts
 
 The logs can be found in different formats:
 
--  Human readable logs as html side:
-   `log.html <../_static/_external_data/coverage_html/index.html>`_
-
 -  Machine readable logs as json file:
    :download:`merge_dicts_test_log.json </_static/_external_data/merge_dicts_test_log.json>`
-
-
 

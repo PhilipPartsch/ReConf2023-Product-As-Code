@@ -20,7 +20,7 @@ The coverage results can be found in different formats:
       ../_collections/test_coverage/test_coverage_for_*
 
 -  Human readable coverage as html content:
-   `report.html <../_static/_external_data/coverage_html/index.html>`_
+   `report <../_static/_external_data/coverage_html/index.html>`_
 
 -  Machine readable coverage as json file:
    :download:`coverage.json </_static/_external_data/coverage.json>`
