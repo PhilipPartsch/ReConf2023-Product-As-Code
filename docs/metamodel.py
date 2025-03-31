@@ -53,7 +53,7 @@ needs_types = [
                dict(directive="arch_module", title="Module", prefix="M_", color="#abcdef", style="package"),
                dict(directive="comp", title="Component", prefix="C_", color="#abcdef", style="component"),
                dict(directive="unit", title="Unit", prefix="U_", color="#abcdef", style="rectangle"),
-               dict(directive="if", title="Interface", prefix="IF_", color="#abcdef", style="card"),
+               dict(directive="interface", title="Interface", prefix="IF_", color="#abcdef", style="card"),
                dict(directive="decision", title="Decision", prefix="D_", color="#efff9c", style="artifact"),
 
                # Test

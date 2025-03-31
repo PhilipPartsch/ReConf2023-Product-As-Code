@@ -57,7 +57,7 @@ Architecture: merge_dicts
 
 
 
-.. if:: merge_dicts
+.. interface:: merge_dicts
    :id: IF_MERGE_DICTS
    :satisfies: SWRQ_MERGE_DICTS, SWRQ_DETECT_MERGE_CONFLICTS, SWRQ_ALLOW_DOUBLE_DEFINITION, SWRQ_USE_FIRST_VALUE_FOR_KEY
    :verified_by: TCOVER_MERGE_DICTS

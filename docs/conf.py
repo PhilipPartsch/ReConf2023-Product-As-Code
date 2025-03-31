@@ -35,8 +35,8 @@ project = 'ReConf 2023 X-As-Code'
 copyright = f'2023 - {date.year}, PhilipPartsch'
 author = 'PhilipPartsch'
 
-release = '0.4'
-version = '0.4.0'
+release = '0.5'
+version = '0.5.0'
 
 # -- General configuration
 on_rtd = os.environ.get("READTHEDOCS") == "True"
