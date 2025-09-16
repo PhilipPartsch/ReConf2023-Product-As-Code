@@ -87,6 +87,9 @@ jobs:
         --show-traceback
         --fail-on-warning
         --keep-going
+    - name: Filter the generated JSON-File
+      run: |
+        python ./.github/scripts/filter_json.py -i ./public/needs.json -o ./public/filtered_needs.json -p -t sw_req
     - name: Archive sphinx public folder
       uses: actions/upload-artifact@v4
       with:
