@@ -17,8 +17,8 @@ def main():
 
     args = parser.parse_args()
 
-    json_input_path = args.input
-    json_output_path = args.output
+    json_input_path = Path(args.input).absolute()
+    json_output_path = Path(args.output).absolute()
     pretty_output: bool = args.pretty
     filter_types = args.filter_types
 
@@ -33,7 +33,7 @@ def main():
     try:
         with json_input_path.open("r", encoding="utf-8") as f:
             data = json.load(f)
-            print("✅ JSON loaded.")
+            print(f"✅ JSON '{json_input_path}' loaded.")
     except json.JSONDecodeError as e:
         print(f"❌ Error during parsing the JSON-File: {e}")
 
@@ -70,7 +70,7 @@ def main():
     try:
         with json_output_path.open("w", encoding="utf-8") as f:
             f.write(str_new_needs)
-            print("✅ Output file written.")
+            print(f"✅ Output file '{json_output_path}' written.")
     except json.JSONDecodeError as e:
         print(f"❌ Error during parsing the JSON-File: {e}")
 
