@@ -272,7 +272,7 @@ def check_verified(app, need, needs, *args, **kwargs):
                 if needs[test_by]['type'] == 'test_spec' and needs[test_by]['status'] == 'verified':
                     if len(needs[test_by]['verified_by']) > 0:
                         for current_verified_by in needs[test_by]['verified_by']:
-                            result_passed = result_passed and needs[current_verified_by]['cases'].isdigit() and (int(needs[current_verified_by]['cases']) > 0)
+                            result_passed = result_passed and (int(needs[current_verified_by]['cases']) > 0)
                             result_passed = result_passed and (needs[current_verified_by]['cases'] == needs[current_verified_by]['passed'])
                             if not result_passed:
                                 return 'failed test cases => failed'
