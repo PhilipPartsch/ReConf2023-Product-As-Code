@@ -31,8 +31,9 @@ Architecture: merge_dicts
       {{uml(need().id)}}
       {{import("implements")}}
       {% for e in need().implements %}
-      'uml: {{uml(e)}}
-      'uml with class key: {{uml(e, "class")}}
+      'uml of {{e}}: {{uml(e)}}
+      'uml of {{e}} with class key: {{uml(e, "class")}}
+      'uml of IF_MERGE_DICTS with class key: {{uml("IF_MERGE_DICTS", "class")}}
       'flow: {{flow(e)}}
       {{e}} - {{need().id}}
       {% endfor %}
