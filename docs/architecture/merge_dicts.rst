@@ -69,9 +69,10 @@ Architecture: merge_dicts
    **Minimal architecture of the element**
 
    .. needarch::
+      :debug:
 
       interface "{{need().title}}" as {{need().id}} {{ref(need().id, text = "")}}
-      port "{{need().title}}" as port_{{need().id}} {{ref(need().id, text = "")}}
+      ' port "{{need().title}}" as port_{{need().id}} {{ref(need().id, text = "")}}
 
    **Architecture with other elements**
 
