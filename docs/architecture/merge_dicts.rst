@@ -31,10 +31,9 @@ Architecture: merge_dicts
       {{uml(need().id)}}
       '{{import("implements")}}
       {% for e in need().implements %}
-      {{uml(e)}}
+      {{uml(e, "diagram")}}
       {{e}} - {{need().id}}
       {% endfor %}
-      }
 
 
    Implementation:
