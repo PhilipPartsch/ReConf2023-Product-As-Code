@@ -26,10 +26,13 @@ Architecture: merge_dicts
 
    .. needarch::
       :key: class
+      :debug:
 
-      rectangle "{{need().title}}" as {{need().id}} {{ref(need().id)}}
-      {{import("implements")}}
-      {% for e in need().implements %}{{e}} <- {{need().id}}
+      {{uml(need().id)}}
+      '{{import("implements")}}
+      {% for e in need().implements %}
+      {{uml(e)}}
+      {{e}} - {{need().id}}
       {% endfor %}
       }
 
