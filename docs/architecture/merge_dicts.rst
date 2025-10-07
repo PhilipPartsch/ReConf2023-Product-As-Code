@@ -29,13 +29,13 @@ Architecture: merge_dicts
       :debug:
 
       {{uml(need().id)}}
-      {{import("implements")}}
+      '{ 1{ import("implements") } }
       {% for e in need().implements %}
       'uml of {{e}}: {{uml(e)}}
       'uml of {{e}} with class key: {{uml(e, "class")}}
       'uml of IF_MERGE_DICTS with class key: {{uml("IF_MERGE_DICTS", "class")}}
       'flow: {{flow(e)}}
-      {{e}} - {{need().id}}
+      '{{e}} - {{need().id}}
       {% endfor %}
 
 
