@@ -26,16 +26,11 @@ Architecture: merge_dicts
 
    .. needarch::
       :key: class
-      :debug:
 
       {{uml(need().id)}}
-      '{ 1{ import("implements") } }
+      {{import("implements")}}
       {% for e in need().implements %}
-      'uml of {{e}}: {{uml(e)}}
-      'uml of {{e}} with class key: {{uml(e, "class")}}
-      'uml of IF_MERGE_DICTS with class key: {{uml("IF_MERGE_DICTS", "class")}}
-      'flow: {{flow(e)}}
-      '{{e}} - {{need().id}}
+      {{e}} - {{need().id}}
       {% endfor %}
 
 
@@ -70,16 +65,13 @@ Architecture: merge_dicts
    **Minimal architecture of the element**
 
    .. needarch::
-      :debug:
 
       interface "{{need().title}}" as {{need().id}} {{ref(need().id, text = "")}}
-      ' port "{{need().title}}" as port_{{need().id}} {{ref(need().id, text = "")}}
 
    **Architecture with other elements**
 
    .. needarch::
       :key: class
-      :debug:
 
       {{uml(need().id)}}
 
