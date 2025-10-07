@@ -12,7 +12,7 @@ Architecture: merge_dicts
    :satisfies: SWRQ_TOOL_merge_dicts, SWRQ_MERGE_DICTS
    :implements: IF_MERGE_DICTS
 
-   **Element**
+   **Minimal architecture of the element**
 
    .. needarch::
 
@@ -31,6 +31,9 @@ Architecture: merge_dicts
       {{uml(need().id)}}
       {{import("implements")}}
       {% for e in need().implements %}
+      'uml: {{uml(e)}}
+      'uml with class key: {{uml(e, "class")}}
+      'flow: {{flow(e)}}
       {{e}} - {{need().id}}
       {% endfor %}
 
@@ -63,11 +66,14 @@ Architecture: merge_dicts
    :satisfies: SWRQ_MERGE_DICTS, SWRQ_DETECT_MERGE_CONFLICTS, SWRQ_ALLOW_DOUBLE_DEFINITION, SWRQ_USE_FIRST_VALUE_FOR_KEY
    :verified_by: TCOVER_MERGE_DICTS
 
-   **Architecture**
+   **Minimal architecture of the element**
 
    .. needarch::
 
       interface "{{need().title}}" as {{need().id}} {{ref(need().id, text = "")}}
+      port "{{need().title}}" as port_{{need().id}} {{ref(need().id, text = "")}}
+
+   **Architecture with other elements**
 
    .. needarch::
       :key: class
