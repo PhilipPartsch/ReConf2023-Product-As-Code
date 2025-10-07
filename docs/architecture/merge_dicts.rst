@@ -69,6 +69,12 @@ Architecture: merge_dicts
 
       interface "{{need().title}}" as {{need().id}} {{ref(need().id, text = "")}}
 
+   .. needarch::
+      :key: class
+      :debug:
+
+      {{uml(need().id)}}
+
    .. instead of explicit manual definition of needarch, we could even use `{{flow(need().id)}}`
       to achieve the same.
 
