@@ -29,9 +29,8 @@ Architecture: merge_dicts
       :debug:
 
       {{uml(need().id)}}
-      '{{import("implements")}}
+      {{import("implements")}}
       {% for e in need().implements %}
-      {{uml(e, "diagram")}}
       {{e}} - {{need().id}}
       {% endfor %}
 
